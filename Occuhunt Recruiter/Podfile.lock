@@ -1,0 +1,57 @@
+PODS:
+  - AFNetworking (2.1.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.1.0):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.1.0)
+  - AFNetworking/Security (2.1.0)
+  - AFNetworking/Serialization (2.1.0)
+  - AFNetworking/UIKit (2.1.0):
+    - AFNetworking/NSURLConnection
+  - AsyncImageView (1.5.1)
+  - BButton (3.2.3)
+  - KLNoteViewController (1.0)
+  - Mixpanel (2.3.1)
+  - SDWebImage (3.5.2):
+    - SDWebImage/Core
+  - SDWebImage-ProgressView (0.3.0):
+    - SDWebImage (~> 3.0)
+  - SDWebImage/Core (3.5.2)
+  - SSKeychain (1.2.1)
+  - UIAlertView+Blocks (0.8)
+  - VENVersionTracker (0.1.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AsyncImageView
+  - BButton
+  - KLNoteViewController
+  - Mixpanel
+  - SDWebImage
+  - SDWebImage-ProgressView
+  - SSKeychain
+  - UIAlertView+Blocks
+  - VENVersionTracker (~> 0.1.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  AsyncImageView: 686febb2b2a923353ede67c529d257498059852d
+  BButton: b405745cd7ccc9444c696b8690fb79541623766a
+  KLNoteViewController: 74c80408021ebd482e2af8d162b14e23041fb06d
+  Mixpanel: 8d189c58bcaac429de9cb4f18a54621df99b7e38
+  SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
+  SDWebImage-ProgressView: 0984b5b885886358dff24964912d3313e104ad4f
+  SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
+  UIAlertView+Blocks: 39a1aee8ea75c4f9f877ff0b3734d84bf2009d1f
+  VENVersionTracker: 678c673a653280c1cf5a260d0f6fecd8d523c715
+
+COCOAPODS: 0.29.0
