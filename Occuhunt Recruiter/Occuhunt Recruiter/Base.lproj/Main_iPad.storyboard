@@ -17,18 +17,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OccuhuntLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="EEc-VI-Ftk">
-                                <rect key="frame" x="209" y="-468" width="200" height="1024"/>
+                                <rect key="frame" x="217" y="24" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recruiter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLQ-2F-bdJ">
-                                <rect key="frame" x="422" y="21" width="217" height="45"/>
+                                <rect key="frame" x="401" y="21" width="217" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0co-QK-uke">
+                                <rect key="frame" x="726" y="27" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="740-gear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="VTg-Z9-4V6"/>
                     <connections>
@@ -57,34 +64,6 @@
             </objects>
             <point key="canvasLocation" x="233" y="1277"/>
         </scene>
-        <!--Person View Controller-->
-        <scene sceneID="QsF-Ol-JUm">
-            <objects>
-                <viewController id="KkL-T6-7EN" customClass="PersonViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OPc-xC-ptC"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZmN-w4-GHt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5wh-H6-lBx">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMD-zv-JMF">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="resumeView" destination="MMD-zv-JMF" id="4Vl-hP-oDy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eEX-ku-osz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1067" y="1277"/>
-        </scene>
         <!--Custom View Controller-->
         <scene sceneID="dSJ-7P-40z">
             <objects>
@@ -105,6 +84,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="740-gear" width="28" height="28"/>
         <image name="OccuhuntLogo.png" width="637" height="162"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

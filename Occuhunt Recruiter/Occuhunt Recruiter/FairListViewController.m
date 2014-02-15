@@ -41,8 +41,8 @@
     self.navigationItem.leftBarButtonItem = fairButtonItem;
     
     CGRect myView = self.view.frame;
-    myView.origin.y += 44;
-    myView.size.height -= 44;
+    myView.origin.y += 20;
+    myView.size.height -= 20;
     
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     _collectionView=[[UICollectionView alloc] initWithFrame:myView collectionViewLayout:layout];
@@ -103,7 +103,7 @@
         attendeeName.text = @"";
     }
     else {
-        attendeeName = [[SharpLabel alloc] initWithFrame:CGRectMake(2, 40, 96, 20)];
+        attendeeName = [[SharpLabel alloc] initWithFrame:CGRectMake(2, 60, 138, 20)];
         attendeeName.tag = 100;
         attendeeName.textAlignment = NSTextAlignmentCenter;
         attendeeName.backgroundColor = [UIColor clearColor];
@@ -126,7 +126,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(200, 200);
+    return CGSizeMake(140, 140);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,7 +134,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 20;
+    return 10;
     
 }
 

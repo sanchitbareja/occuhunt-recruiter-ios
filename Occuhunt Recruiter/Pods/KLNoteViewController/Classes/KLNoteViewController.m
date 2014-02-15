@@ -12,7 +12,7 @@
 //Layout properties
 #define kDefaultMinimizedScalingFactor 1     //Amount to shrink each card from the previous one
 #define kDefaultMaximizedScalingFactor 1.00     //Maximum a card can be scaled to
-#define kDefaultNavigationBarOverlap 1.3       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
+#define kDefaultNavigationBarOverlap 1.2       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
 
 //Animation properties
 #define kDefaultAnimationDuration 0.2           //Amount of time for the animations to occur
@@ -20,13 +20,13 @@
 #define kDefaultReloadShowAnimationDuration 0.6
 
 //Position for the stack of navigation controllers to originate at
-#define kDefaultVerticalOrigin 70              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
+#define kDefaultVerticalOrigin 80              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
 
 //Corner radius properties
 #define kDefaultCornerRadius 8.0
 
 //Shadow Properties - Note : Disabling shadows greatly improves performance and fluidity of animations
-#define kDefaultShadowEnabled YES
+#define kDefaultShadowEnabled NO
 #define kDefaultShadowColor [UIColor blackColor]
 #define kDefaultShadowOffset CGSizeMake(0, -1)
 #define kDefaultShadowRadius kDefaultCornerRadius
@@ -57,7 +57,9 @@
 @end
 
 @implementation KLNoteViewController
-
+- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar {
+    return UIBarPositionTopAttached;
+}
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     

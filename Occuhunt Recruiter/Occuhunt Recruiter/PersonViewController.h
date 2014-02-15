@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerIO.h"
 
-@interface PersonViewController : UIViewController <UIScrollViewDelegate>
+@interface PersonViewController : UIViewController <UIScrollViewDelegate, ServerIODelegate, UINavigationBarDelegate, UIBarPositioningDelegate> {
+    ServerIO *thisServer;
+}
 
 @property (nonatomic, strong) IBOutlet UIView *resumeView;
 @property (nonatomic, strong) IBOutlet UIScrollView *portfolioScrollView;
 @property (nonatomic, strong) IBOutlet UIImageView *portfolioImageView;
+
+@property (nonatomic, strong) NSString *resumeLink;
 
 @end

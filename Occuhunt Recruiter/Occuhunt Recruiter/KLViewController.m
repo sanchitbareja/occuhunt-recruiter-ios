@@ -9,6 +9,7 @@
 #import "KLViewController.h"
 #import "KLCustomViewController.h"
 #import "FairListViewController.h"
+#import "PersonViewController.h"
 
 @interface KLViewController ()
 
@@ -18,7 +19,7 @@
 
 - (void)loadView {
     [super loadView];
-    self.occuhuntRecruiterLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:34];
+    self.occuhuntRecruiterLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:28];
     self.occuhuntRecruiterLabel.textColor = UIColorFromRGB(0x939393);
 
 }
@@ -51,6 +52,11 @@
     if (index == 0) {
         FairListViewController *flvc = [[FairListViewController alloc] init];
         UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:flvc];
+        return navC;
+    }
+    else if (index == 1) {
+        PersonViewController *pvc = [[PersonViewController alloc] init];
+        UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:pvc];
         return navC;
     }
     //Get the relevant data for the navigation controller
