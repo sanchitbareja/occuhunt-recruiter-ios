@@ -10,33 +10,33 @@
 #import <QuartzCore/QuartzCore.h>
 
 //Layout properties
-#define kDefaultMinimizedScalingFactor 0.98     //Amount to shrink each card from the previous one
+#define kDefaultMinimizedScalingFactor 1     //Amount to shrink each card from the previous one
 #define kDefaultMaximizedScalingFactor 1.00     //Maximum a card can be scaled to
-#define kDefaultNavigationBarOverlap 0.90       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
+#define kDefaultNavigationBarOverlap 1.3       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
 
 //Animation properties
-#define kDefaultAnimationDuration 0.3           //Amount of time for the animations to occur
+#define kDefaultAnimationDuration 0.2           //Amount of time for the animations to occur
 #define kDefaultReloadHideAnimationDuration 0.4
 #define kDefaultReloadShowAnimationDuration 0.6
 
 //Position for the stack of navigation controllers to originate at
-#define kDefaultVerticalOrigin 100              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
+#define kDefaultVerticalOrigin 70              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
 
 //Corner radius properties
-#define kDefaultCornerRadius 5.0
+#define kDefaultCornerRadius 8.0
 
 //Shadow Properties - Note : Disabling shadows greatly improves performance and fluidity of animations
 #define kDefaultShadowEnabled YES
 #define kDefaultShadowColor [UIColor blackColor]
-#define kDefaultShadowOffset CGSizeMake(0, -5)
+#define kDefaultShadowOffset CGSizeMake(0, -1)
 #define kDefaultShadowRadius kDefaultCornerRadius
 #define kDefaultShadowOpacity 0.60
 
 //Gesture properties
-#define kDefaultNumberOfTapsRequired 2
+#define kDefaultNumberOfTapsRequired 1
 
 //Distance to top of screen that must be passed in order to toggle full screen state transition
-#define kFullScreenDistanceThreshold 44.0
+#define kFullScreenDistanceThreshold 44
 #define kAllowsInteractionInDefaultState NO
 
 @interface KLNoteViewController ()
@@ -367,6 +367,7 @@ willBeginPanningGesture:(UIPanGestureRecognizer*) gesture {
 @end
 
 @implementation KLControllerCard
+
 -(id) initWithNoteViewController: (KLNoteViewController*) noteViewController
                andViewController: (UIViewController*) viewController {
     if (self = [super initWithFrame: viewController.view.frame]) {

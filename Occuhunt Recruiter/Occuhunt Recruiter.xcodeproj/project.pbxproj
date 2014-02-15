@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		15B7EFD4DC3B4D21BA1EAEB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD462FC6FEB43D6BB0CA682 /* libPods.a */; };
+		8F16469118AF337800BA7521 /* KLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16468E18AF337800BA7521 /* KLViewController.m */; };
+		8F16469218AF337800BA7521 /* KLCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16469018AF337800BA7521 /* KLCustomViewController.m */; };
+		8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469318AF339500BA7521 /* NavigationControllerData.plist */; };
+		8F16469A18AF38CB00BA7521 /* FairListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16469918AF38CB00BA7521 /* FairListViewController.m */; };
+		8F16469C18AF3A2400BA7521 /* OccuhuntLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */; };
+		8F1646A718AF45C700BA7521 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469D18AF45C700BA7521 /* ProximaNova-Black.otf */; };
+		8F1646A818AF45C700BA7521 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469E18AF45C700BA7521 /* ProximaNova-Bold.otf */; };
+		8F1646A918AF45C700BA7521 /* ProximaNova-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469F18AF45C700BA7521 /* ProximaNova-BoldIt.otf */; };
+		8F1646AA18AF45C700BA7521 /* ProximaNova-Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A018AF45C700BA7521 /* ProximaNova-Extrabold.otf */; };
+		8F1646AB18AF45C700BA7521 /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A118AF45C700BA7521 /* ProximaNova-Light.otf */; };
+		8F1646AC18AF45C700BA7521 /* ProximaNova-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A218AF45C700BA7521 /* ProximaNova-LightItalic.otf */; };
+		8F1646AD18AF45C700BA7521 /* ProximaNova-RegItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A318AF45C700BA7521 /* ProximaNova-RegItalic.otf */; };
+		8F1646AE18AF45C700BA7521 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A418AF45C700BA7521 /* ProximaNova-Regular.otf */; };
+		8F1646AF18AF45C700BA7521 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A518AF45C700BA7521 /* ProximaNova-Semibold.otf */; };
+		8F1646B018AF45C700BA7521 /* ProximaNova-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F1646A618AF45C700BA7521 /* ProximaNova-SemiboldItalic.otf */; };
+		8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1646B318AF471B00BA7521 /* ServerIO.m */; };
+		8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1646B618AF499C00BA7521 /* SharpLabel.m */; };
+		8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1646B918AF535600BA7521 /* PersonViewController.m */; };
 		8F9C56EB18ACAF4300ECFC19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */; };
 		8F9C56ED18ACAF4300ECFC19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EC18ACAF4300ECFC19 /* CoreGraphics.framework */; };
 		8F9C56EF18ACAF4300ECFC19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EE18ACAF4300ECFC19 /* UIKit.framework */; };
@@ -16,8 +34,6 @@
 		8F9C56FB18ACAF4300ECFC19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C56FA18ACAF4300ECFC19 /* AppDelegate.m */; };
 		8F9C56FE18ACAF4300ECFC19 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C56FC18ACAF4300ECFC19 /* Main_iPhone.storyboard */; };
 		8F9C570118ACAF4300ECFC19 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C56FF18ACAF4300ECFC19 /* Main_iPad.storyboard */; };
-		8F9C570418ACAF4300ECFC19 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C570318ACAF4300ECFC19 /* MasterViewController.m */; };
-		8F9C570718ACAF4300ECFC19 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C570618ACAF4300ECFC19 /* DetailViewController.m */; };
 		8F9C570918ACAF4300ECFC19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C570818ACAF4300ECFC19 /* Images.xcassets */; };
 		8F9C571018ACAF4300ECFC19 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C570F18ACAF4300ECFC19 /* XCTest.framework */; };
 		8F9C571118ACAF4300ECFC19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */; };
@@ -38,6 +54,30 @@
 
 /* Begin PBXFileReference section */
 		64978D7307DD4B71A52DFBCC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8F16468D18AF337800BA7521 /* KLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLViewController.h; sourceTree = "<group>"; };
+		8F16468E18AF337800BA7521 /* KLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLViewController.m; sourceTree = "<group>"; };
+		8F16468F18AF337800BA7521 /* KLCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCustomViewController.h; sourceTree = "<group>"; };
+		8F16469018AF337800BA7521 /* KLCustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCustomViewController.m; sourceTree = "<group>"; };
+		8F16469318AF339500BA7521 /* NavigationControllerData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NavigationControllerData.plist; sourceTree = "<group>"; };
+		8F16469818AF38CB00BA7521 /* FairListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FairListViewController.h; sourceTree = "<group>"; };
+		8F16469918AF38CB00BA7521 /* FairListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FairListViewController.m; sourceTree = "<group>"; };
+		8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OccuhuntLogo.png; sourceTree = "<group>"; };
+		8F16469D18AF45C700BA7521 /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
+		8F16469E18AF45C700BA7521 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		8F16469F18AF45C700BA7521 /* ProximaNova-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-BoldIt.otf"; sourceTree = "<group>"; };
+		8F1646A018AF45C700BA7521 /* ProximaNova-Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Extrabold.otf"; sourceTree = "<group>"; };
+		8F1646A118AF45C700BA7521 /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		8F1646A218AF45C700BA7521 /* ProximaNova-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-LightItalic.otf"; sourceTree = "<group>"; };
+		8F1646A318AF45C700BA7521 /* ProximaNova-RegItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-RegItalic.otf"; sourceTree = "<group>"; };
+		8F1646A418AF45C700BA7521 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		8F1646A518AF45C700BA7521 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		8F1646A618AF45C700BA7521 /* ProximaNova-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		8F1646B218AF471B00BA7521 /* ServerIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerIO.h; sourceTree = "<group>"; };
+		8F1646B318AF471B00BA7521 /* ServerIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerIO.m; sourceTree = "<group>"; };
+		8F1646B518AF499C00BA7521 /* SharpLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharpLabel.h; sourceTree = "<group>"; };
+		8F1646B618AF499C00BA7521 /* SharpLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharpLabel.m; sourceTree = "<group>"; };
+		8F1646B818AF535600BA7521 /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
+		8F1646B918AF535600BA7521 /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
 		8F9C56E718ACAF4300ECFC19 /* Occuhunt Recruiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occuhunt Recruiter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8F9C56EC18ACAF4300ECFC19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,10 +90,6 @@
 		8F9C56FA18ACAF4300ECFC19 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8F9C56FD18ACAF4300ECFC19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		8F9C570018ACAF4300ECFC19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		8F9C570218ACAF4300ECFC19 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		8F9C570318ACAF4300ECFC19 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		8F9C570518ACAF4300ECFC19 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		8F9C570618ACAF4300ECFC19 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8F9C570818ACAF4300ECFC19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8F9C570E18ACAF4300ECFC19 /* Occuhunt RecruiterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Occuhunt RecruiterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9C570F18ACAF4300ECFC19 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -88,6 +124,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F1646B118AF45CB00BA7521 /* Proxima Nova */ = {
+			isa = PBXGroup;
+			children = (
+				8F16469D18AF45C700BA7521 /* ProximaNova-Black.otf */,
+				8F16469E18AF45C700BA7521 /* ProximaNova-Bold.otf */,
+				8F16469F18AF45C700BA7521 /* ProximaNova-BoldIt.otf */,
+				8F1646A018AF45C700BA7521 /* ProximaNova-Extrabold.otf */,
+				8F1646A118AF45C700BA7521 /* ProximaNova-Light.otf */,
+				8F1646A218AF45C700BA7521 /* ProximaNova-LightItalic.otf */,
+				8F1646A318AF45C700BA7521 /* ProximaNova-RegItalic.otf */,
+				8F1646A418AF45C700BA7521 /* ProximaNova-Regular.otf */,
+				8F1646A518AF45C700BA7521 /* ProximaNova-Semibold.otf */,
+				8F1646A618AF45C700BA7521 /* ProximaNova-SemiboldItalic.otf */,
+			);
+			name = "Proxima Nova";
+			sourceTree = "<group>";
+		};
 		8F9C56DE18ACAF4300ECFC19 = {
 			isa = PBXGroup;
 			children = (
@@ -125,12 +178,22 @@
 			children = (
 				8F9C56F918ACAF4300ECFC19 /* AppDelegate.h */,
 				8F9C56FA18ACAF4300ECFC19 /* AppDelegate.m */,
+				8F1646B218AF471B00BA7521 /* ServerIO.h */,
+				8F1646B318AF471B00BA7521 /* ServerIO.m */,
 				8F9C56FC18ACAF4300ECFC19 /* Main_iPhone.storyboard */,
 				8F9C56FF18ACAF4300ECFC19 /* Main_iPad.storyboard */,
-				8F9C570218ACAF4300ECFC19 /* MasterViewController.h */,
-				8F9C570318ACAF4300ECFC19 /* MasterViewController.m */,
-				8F9C570518ACAF4300ECFC19 /* DetailViewController.h */,
-				8F9C570618ACAF4300ECFC19 /* DetailViewController.m */,
+				8F16468D18AF337800BA7521 /* KLViewController.h */,
+				8F16468E18AF337800BA7521 /* KLViewController.m */,
+				8F16469818AF38CB00BA7521 /* FairListViewController.h */,
+				8F16469918AF38CB00BA7521 /* FairListViewController.m */,
+				8F1646B818AF535600BA7521 /* PersonViewController.h */,
+				8F1646B918AF535600BA7521 /* PersonViewController.m */,
+				8F16468F18AF337800BA7521 /* KLCustomViewController.h */,
+				8F16469018AF337800BA7521 /* KLCustomViewController.m */,
+				8F16469318AF339500BA7521 /* NavigationControllerData.plist */,
+				8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */,
+				8F1646B518AF499C00BA7521 /* SharpLabel.h */,
+				8F1646B618AF499C00BA7521 /* SharpLabel.m */,
 				8F9C570818ACAF4300ECFC19 /* Images.xcassets */,
 				8F9C56F118ACAF4300ECFC19 /* Supporting Files */,
 			);
@@ -140,6 +203,7 @@
 		8F9C56F118ACAF4300ECFC19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8F1646B118AF45CB00BA7521 /* Proxima Nova */,
 				8F9C56F218ACAF4300ECFC19 /* Occuhunt Recruiter-Info.plist */,
 				8F9C56F318ACAF4300ECFC19 /* InfoPlist.strings */,
 				8F9C56F618ACAF4300ECFC19 /* main.m */,
@@ -245,8 +309,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F9C570118ACAF4300ECFC19 /* Main_iPad.storyboard in Resources */,
+				8F1646AE18AF45C700BA7521 /* ProximaNova-Regular.otf in Resources */,
+				8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */,
+				8F1646A918AF45C700BA7521 /* ProximaNova-BoldIt.otf in Resources */,
+				8F16469C18AF3A2400BA7521 /* OccuhuntLogo.png in Resources */,
 				8F9C570918ACAF4300ECFC19 /* Images.xcassets in Resources */,
+				8F1646AC18AF45C700BA7521 /* ProximaNova-LightItalic.otf in Resources */,
+				8F1646AF18AF45C700BA7521 /* ProximaNova-Semibold.otf in Resources */,
 				8F9C56FE18ACAF4300ECFC19 /* Main_iPhone.storyboard in Resources */,
+				8F1646AB18AF45C700BA7521 /* ProximaNova-Light.otf in Resources */,
+				8F1646AD18AF45C700BA7521 /* ProximaNova-RegItalic.otf in Resources */,
+				8F1646B018AF45C700BA7521 /* ProximaNova-SemiboldItalic.otf in Resources */,
+				8F1646AA18AF45C700BA7521 /* ProximaNova-Extrabold.otf in Resources */,
+				8F1646A818AF45C700BA7521 /* ProximaNova-Bold.otf in Resources */,
+				8F1646A718AF45C700BA7521 /* ProximaNova-Black.otf in Resources */,
 				8F9C56F518ACAF4300ECFC19 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,10 +375,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */,
 				8F9C56FB18ACAF4300ECFC19 /* AppDelegate.m in Sources */,
-				8F9C570418ACAF4300ECFC19 /* MasterViewController.m in Sources */,
+				8F16469218AF337800BA7521 /* KLCustomViewController.m in Sources */,
 				8F9C56F718ACAF4300ECFC19 /* main.m in Sources */,
-				8F9C570718ACAF4300ECFC19 /* DetailViewController.m in Sources */,
+				8F16469A18AF38CB00BA7521 /* FairListViewController.m in Sources */,
+				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,
+				8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */,
+				8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

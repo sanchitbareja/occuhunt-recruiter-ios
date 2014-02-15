@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <KLNoteViewController/KLNoteViewController.h>
 
-@interface DetailViewController : UIViewController <KLNoteViewControllerDataSource, KLNoteViewControllerDelegate>
+@interface DetailViewController : KLNoteViewController
 
 @property (strong, nonatomic) id detailItem;
-@property(nonatomic, strong) KLNoteViewController* noteViewController;
-
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

@@ -14,8 +14,11 @@
 @implementation DetailViewController
 
 - (NSInteger)numberOfControllerCardsInNoteView:(KLNoteViewController*) noteView {
-    return 2;
+    return 5;
+    
+    
 }
+
 - (UIViewController *)noteView:(KLNoteViewController*)noteView viewControllerAtIndex:(NSInteger) index {
     // Get the relevant data for the navigation controller
     
@@ -23,6 +26,20 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
     
     KLNoteViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
+    switch (index) {
+        case 0:
+            viewController.navigationItem.title = @"First";
+            break;
+        case 1:
+            viewController.navigationItem.title = @"Second";
+            break;
+        case 2:
+            viewController.navigationItem.title = @"Third";
+            break;
+            
+        default:
+            break;
+    }
     
     // Return the custom view controller
     return viewController;
