@@ -61,16 +61,6 @@
     NSMutableString *constructString = [NSMutableString stringWithString:@"{"];
     for (NSString *key in args) {
         NSString *object = [args objectForKey:key];
-//        if ([key isEqualToString:@"unfavorite"]) {
-//            if ([object isEqualToString:@"TRUE"]) {
-//            [constructString appendFormat:@"\"%@\":%i,", key, [object boolValue]];
-//            continue;
-//            }
-//            else if ([object isEqualToString:@"FALSE"]) {
-//                [constructString appendFormat:@"\"%@\":%i,", key, [object boolValue]];
-//                continue;
-//            }
-//        }
         [constructString appendFormat:@"\"%@\":%@,", key, object];
     }
     constructString = [NSMutableString stringWithString:[constructString substringToIndex:constructString.length-1]];
@@ -226,9 +216,14 @@
 }
 
 - (void)getAttendeesWithStatus:(NSString *)eventID andCompanyID:(NSString *)companyID {
-    NSLog(@"GET ATTENDEES");
     NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/api/v1/applications/?unique_students=true&fair_id=%@&company_id=%@", eventID, companyID];
     [self makeJSONCall:url andTag:GETATTENDEESWITHSTATUS];
 }
+
+- (void)getSpecificApplicationWithUserID:(NSString *)userID andCompanyID:(NSString *)companyID andEventID:(NSString *)eventID {
+    NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/api/v1/applications/"];
+    [self makeJSONPost:url andArgs:@{@"company_id":companyID, @"fair_id":eventID, @"user_id":userID} andTag:GETSPECIFICAPPLICATION];
+}
+
 
 @end

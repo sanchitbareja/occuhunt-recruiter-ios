@@ -87,7 +87,20 @@
      selector:@selector(keyboardWillBeHidden:)
      name:UIKeyboardWillHideNotification object:nil];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"Going to appear!");
+    if (self.userNotes.length > 0) {
+        daltvc.text = self.userNotes;
+    }
     [daltvc becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [daltvc resignFirstResponder];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView

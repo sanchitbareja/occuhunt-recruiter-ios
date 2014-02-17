@@ -12,7 +12,6 @@
 #import <ChatHeads/CHDraggableView.h>
 #import <ChatHeads/CHDraggableView+Avatar.h>
 #import <ChatHeads/CHAvatarView.h>
-#import "NotesViewController.h"
 
 @interface PersonViewController ()
 
@@ -83,7 +82,8 @@
     thisServer = [[ServerIO alloc] init];
     thisServer.delegate = (id) self;
     
-    [thisServer getUser:self.userID];
+    [thisServer getSpecificApplicationWithUserID:self.userID andCompanyID:@"243" andEventID:self.eventID];
+#warning TO CHANGE COMPANY ID
     
     
     CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"Favicon4.png"]];
@@ -97,6 +97,8 @@
     
     [self.view addSubview:draggableView];
 
+    nvc = [[NotesViewController alloc] init];
+    nvc.userNotes = [self.userApplication objectForKey:@"note"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,16 +120,17 @@
 
 - (UIViewController *)draggingCoordinator:(CHDraggingCoordinator *)coordinator viewControllerForDraggableView:(CHDraggableView *)draggableView
 {
-    return [[NotesViewController alloc] init];
+    return nvc;
 }
 
 #pragma mark - Server IO Delegate
 
 - (void)returnData:(AFHTTPRequestOperation *)operation response:(NSDictionary *)response {
-    if (operation.tag == GETUSER) {
-        if ([[[[response objectForKey:@"response"] objectForKey:@"users"] objectAtIndex:0] objectForKey:@"resume"]) {;
+    if (operation.tag == GETSPECIFICAPPLICATION) {
+        NSLog(@"GET Specific!");
+        if ([[response objectForKey:@"user"] objectForKey:@"resume"]) {;
             
-            NSString *resumeLink = [[[[response objectForKey:@"response"] objectForKey:@"users"] objectAtIndex:0] objectForKey:@"resume"];
+            NSString *resumeLink = [[response objectForKey:@"user"] objectForKey:@"resume"];
             
             // No resume uploaded
             if ([resumeLink isEqual: [NSNull null]]) {
@@ -137,11 +140,10 @@
             }
             else {
                 self.resumeLink = resumeLink;
+                NSLog(@"Resume link is %@", self.resumeLink);
             }
             
-            self.resumeView.hidden = NO;
-            
-            int userIDInt = [[[[[response objectForKey:@"response"] objectForKey:@"users"] objectAtIndex:0] objectForKey:@"id"] intValue];
+            int userIDInt = [[[[response objectForKey:@"users"] objectAtIndex:0] objectForKey:@"id"] intValue];
             NSString *userID = [NSString stringWithFormat:@"%i", userIDInt];
             self.portfolioImageView.contentMode = UIViewContentModeTopLeft;
             NSLog(@"resume link %@", resumeLink);

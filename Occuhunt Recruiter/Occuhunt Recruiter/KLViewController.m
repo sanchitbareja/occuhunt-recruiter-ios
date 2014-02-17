@@ -224,15 +224,13 @@
     NSLog(@"Selected");
     PersonViewController *pvc = [[PersonViewController alloc] init];
     NSDictionary *currentlySelectedUser = [[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"];
-    if ([currentlySelectedUser objectForKey:@"linkedin_uid"] == [NSNull null]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:@"The applicant's profile is not set up right now." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    pvc.userID = [currentlySelectedUser objectForKey:@"linkedin_uid"];
+    pvc.userID = [currentlySelectedUser objectForKey:@"id"];
+    pvc.userApplication = currentlySelectedUser;
+    pvc.eventID = [self.currentlySelectedEvent objectForKey:@"id"];
     pvc.title = [NSString stringWithFormat:@"%@ %@", [currentlySelectedUser objectForKey:@"first_name"], [currentlySelectedUser objectForKey:@"last_name"]];
     pvc.delegate = (id) self;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
+    
     [self presentViewController:nc animated:YES completion:nil];
 }
 

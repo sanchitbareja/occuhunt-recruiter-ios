@@ -23,6 +23,7 @@
 - (void)getHunts:(NSString *)userID;
 - (void)getAttendees:(NSString *)eventID;
 - (void)getAttendeesWithStatus:(NSString *)eventID andCompanyID:(NSString *)companyID;
+- (void)getSpecificApplicationWithUserID:(NSString *)userID andCompanyID:(NSString *)companyID andEventID:(NSString *)eventID;
 
 @property (nonatomic, assign) id <ServerIODelegate> delegate;
 

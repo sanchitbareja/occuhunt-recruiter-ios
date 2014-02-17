@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <DALinedTextView/DALinedTextView.h>
 
 @interface NotesViewController : UIViewController <UITextViewDelegate> {
     UITextView *daltvc;
 }
+
+@property (nonatomic, strong) NSString *userNotes;
 
 @end
