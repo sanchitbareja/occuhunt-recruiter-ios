@@ -33,34 +33,20 @@
     daltvc = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     daltvc.delegate = self;
     
+    NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
     // Create a new RFToolbarButton
-    RFToolbarButton *exampleButton = [RFToolbarButton buttonWithTitle:@"Passionate"];
-    RFToolbarButton *exampleButton2 = [RFToolbarButton buttonWithTitle:@"Used Product"];
-    RFToolbarButton *exampleButton3 = [RFToolbarButton buttonWithTitle:@"Eng. Approval"];
-    RFToolbarButton *exampleButton4 = [RFToolbarButton buttonWithTitle:@"Referral"];
-    
-    [exampleButton addEventHandler:^{
-        [daltvc insertText:@"This student is passionate about our product.\n"];
-    } forControlEvents:UIControlEventTouchUpInside];
-    [exampleButton2 addEventHandler:^{
-        [daltvc insertText:@"This student has used our product before.\n"];
-    } forControlEvents:UIControlEventTouchUpInside];
-    [exampleButton3 addEventHandler:^{
-        [daltvc insertText:@"This student has been approved by the engineer.\n"];
-    } forControlEvents:UIControlEventTouchUpInside];
-    [exampleButton4 addEventHandler:^{
-        [daltvc insertText:@"This student has been referred by "];
-    } forControlEvents:UIControlEventTouchUpInside];
-    
+    NSMutableArray *shortcutButtons = [[NSMutableArray alloc] init];
+    for (NSDictionary *eachShortcut in listOfShortcuts) {
+        RFToolbarButton *eachButton = [RFToolbarButton buttonWithTitle:[eachShortcut objectForKey:@"phrase"]];
+        [eachButton addEventHandler:^{
+            [daltvc insertText:[eachShortcut objectForKey:@"shortcut"]];
+        } forControlEvents:UIControlEventTouchUpInside];
+        [shortcutButtons addObject:eachButton];
+    }
     // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
-    daltvc.inputAccessoryView = [RFKeyboardToolbar toolbarViewWithButtons:@[exampleButton, exampleButton2, exampleButton3, exampleButton4]];
-    
+    daltvc.inputAccessoryView = [RFKeyboardToolbar toolbarViewWithButtons:shortcutButtons];
     
     [self.view addSubview:daltvc];
-    
-//    daltvc.text = ;
-//    daltvc.font = [UIFont fontWithName:@"Proxima Nova" size:20];
-    
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineHeightMultiple = 30.0f;

@@ -57,6 +57,7 @@
     self.rejectedList = [[NSMutableArray alloc] init];
     self.interviewingList = [[NSMutableArray alloc] init];
     self.listOfAttendees = [[NSMutableArray alloc] init];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +90,7 @@
 
 - (IBAction)openSettings:(id)sender {
     SettingsViewController *svc = [[SettingsViewController alloc] init];
+    svc.delegate = self;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:svc];
     nc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:nc animated:YES completion:nil];

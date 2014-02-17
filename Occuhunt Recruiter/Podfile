@@ -13,3 +13,4 @@ pod 'DALinedTextView'
 pod 'SKBounceAnimation'
 pod 'ChatHeads'
 pod "RFKeyboardToolbar", "~> 1.1"
+pod "PinPad"

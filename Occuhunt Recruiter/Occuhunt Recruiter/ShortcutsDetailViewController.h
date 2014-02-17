@@ -14,6 +14,7 @@
     UIBarButtonItem *saveButton;
 }
 
+@property (nonatomic, assign) int index;
 @property (nonatomic, strong) NSString *phrase;
 @property (nonatomic, strong) NSString *shortcut;
 

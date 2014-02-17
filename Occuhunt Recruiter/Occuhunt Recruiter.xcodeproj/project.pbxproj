@@ -29,6 +29,10 @@
 		8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1646B318AF471B00BA7521 /* ServerIO.m */; };
 		8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1646B618AF499C00BA7521 /* SharpLabel.m */; };
 		8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1646B918AF535600BA7521 /* PersonViewController.m */; };
+		8F608D6918B1F4DD008F45EA /* PPCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F608D6318B1F4DD008F45EA /* PPCircleButton.m */; };
+		8F608D6A18B1F4DD008F45EA /* PPPinCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F608D6518B1F4DD008F45EA /* PPPinCircleView.m */; };
+		8F608D6B18B1F4DD008F45EA /* PPPinPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */; };
+		8F608D6C18B1F4DD008F45EA /* PPPinPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */; };
 		8F9C56EB18ACAF4300ECFC19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */; };
 		8F9C56ED18ACAF4300ECFC19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EC18ACAF4300ECFC19 /* CoreGraphics.framework */; };
 		8F9C56EF18ACAF4300ECFC19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EE18ACAF4300ECFC19 /* UIKit.framework */; };
@@ -86,6 +90,13 @@
 		8F1646B618AF499C00BA7521 /* SharpLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharpLabel.m; sourceTree = "<group>"; };
 		8F1646B818AF535600BA7521 /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		8F1646B918AF535600BA7521 /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
+		8F608D6218B1F4DD008F45EA /* PPCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCircleButton.h; sourceTree = "<group>"; };
+		8F608D6318B1F4DD008F45EA /* PPCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCircleButton.m; sourceTree = "<group>"; };
+		8F608D6418B1F4DD008F45EA /* PPPinCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinCircleView.h; sourceTree = "<group>"; };
+		8F608D6518B1F4DD008F45EA /* PPPinCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinCircleView.m; sourceTree = "<group>"; };
+		8F608D6618B1F4DD008F45EA /* PPPinPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinPadViewController.h; sourceTree = "<group>"; };
+		8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinPadViewController.m; sourceTree = "<group>"; };
+		8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPinPadViewController.xib; sourceTree = "<group>"; };
 		8F9C56E718ACAF4300ECFC19 /* Occuhunt Recruiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occuhunt Recruiter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8F9C56EC18ACAF4300ECFC19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -211,6 +222,13 @@
 				8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */,
 				8F1646B518AF499C00BA7521 /* SharpLabel.h */,
 				8F1646B618AF499C00BA7521 /* SharpLabel.m */,
+				8F608D6218B1F4DD008F45EA /* PPCircleButton.h */,
+				8F608D6318B1F4DD008F45EA /* PPCircleButton.m */,
+				8F608D6418B1F4DD008F45EA /* PPPinCircleView.h */,
+				8F608D6518B1F4DD008F45EA /* PPPinCircleView.m */,
+				8F608D6618B1F4DD008F45EA /* PPPinPadViewController.h */,
+				8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */,
+				8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */,
 				8F9C570818ACAF4300ECFC19 /* Images.xcassets */,
 				8F9C56F118ACAF4300ECFC19 /* Supporting Files */,
 			);
@@ -333,6 +351,7 @@
 				8F9C570918ACAF4300ECFC19 /* Images.xcassets in Resources */,
 				8F1646AC18AF45C700BA7521 /* ProximaNova-LightItalic.otf in Resources */,
 				8F1646AF18AF45C700BA7521 /* ProximaNova-Semibold.otf in Resources */,
+				8F608D6C18B1F4DD008F45EA /* PPPinPadViewController.xib in Resources */,
 				8F11C58418B1B66000409A34 /* Favicon4.png in Resources */,
 				8F9C56FE18ACAF4300ECFC19 /* Main_iPhone.storyboard in Resources */,
 				8F1646AB18AF45C700BA7521 /* ProximaNova-Light.otf in Resources */,
@@ -393,14 +412,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F608D6A18B1F4DD008F45EA /* PPPinCircleView.m in Sources */,
 				8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */,
 				8F9C56FB18ACAF4300ECFC19 /* AppDelegate.m in Sources */,
+				8F608D6918B1F4DD008F45EA /* PPCircleButton.m in Sources */,
 				8F9C56F718ACAF4300ECFC19 /* main.m in Sources */,
 				8F11C58718B1E47500409A34 /* SettingsViewController.m in Sources */,
 				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,
 				8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */,
 				8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */,
 				8F11C58C18B1E9D600409A34 /* ShortcutsDetailViewController.m in Sources */,
+				8F608D6B18B1F4DD008F45EA /* PPPinPadViewController.m in Sources */,
 				8F11C58218B1A0B800409A34 /* EventListPickerController.m in Sources */,
 				8FA320F218B18DD400BF6CD4 /* NotesViewController.m in Sources */,
 			);

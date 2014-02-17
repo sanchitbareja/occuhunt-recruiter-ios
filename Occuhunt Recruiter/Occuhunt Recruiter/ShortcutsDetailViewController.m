@@ -30,12 +30,18 @@
     [self.tableView setAllowsSelection:NO];
     
     saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveShortcut)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [phraseTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,7 +53,7 @@
 #pragma mark - Table view data source
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return @"Create a shortcut for entering phrases while writing notes.";
+    return @"Create a shortcut for entering phrases while writing notes. You may use \n for line breaks.";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -72,7 +78,7 @@
     if (indexPath.row == 0) {
         cell.textLabel.text = @"Phrase";
         cell.detailTextLabel.hidden = YES;
-        phraseTextField = [[UITextField alloc] initWithFrame:CGRectMake(80, 4, 410, 36)];
+        phraseTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 4, 410, 36)];
         [cell.contentView addSubview:phraseTextField];
         phraseTextField.textAlignment = NSTextAlignmentRight;
         phraseTextField.delegate = self;
@@ -84,7 +90,7 @@
     else if (indexPath.row == 1) {
         cell.textLabel.text = @"Shortcut";
         cell.detailTextLabel.hidden = YES;
-        shortcutTextField = [[UITextField alloc] initWithFrame:CGRectMake(80, 4, 410, 36)];
+        shortcutTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 4, 410, 36)];
         [cell.contentView addSubview:shortcutTextField];
         shortcutTextField.textAlignment = NSTextAlignmentRight;
         shortcutTextField.delegate = self;
@@ -99,8 +105,17 @@
 - (void)saveShortcut {
     if (phraseTextField.text.length > 0 && shortcutTextField.text.length > 0) {
         NSMutableArray *listOfShortcuts = [[[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"] mutableCopy];
-        [listOfShortcuts addObject:@{@"phrase":phraseTextField.text, @"shortcut":shortcutTextField.text}];
+        if (self.phrase.length > 0) {
+            //override
+            [listOfShortcuts setObject:@{@"phrase":phraseTextField.text, @"shortcut":shortcutTextField.text} atIndexedSubscript:self.index];
+            [[NSUserDefaults standardUserDefaults] setObject:listOfShortcuts forKey:@"shortcuts"];
+        }
+        else {
+            [listOfShortcuts addObject:@{@"phrase":phraseTextField.text, @"shortcut":shortcutTextField.text}];
+            [[NSUserDefaults standardUserDefaults] setObject:listOfShortcuts forKey:@"shortcuts"];
+        }
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -36,20 +36,28 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Shortcuts"];
-
     
-    // TEST DATA
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+    self.navigationItem.leftBarButtonItem = closeButton;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    NSLog(@"Reloading shortcuts");
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)close {
+    if (self.delegate) {
+        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - Table view data source
@@ -87,7 +95,7 @@
             return 1;
             break;
         case 2:
-            return 2;
+            return 1;
             break;
         default:
             break;
@@ -132,7 +140,6 @@
         default:
             break;
     }
-    
     return cell;
 }
 
@@ -147,6 +154,7 @@
         NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
         ShortcutsDetailViewController *sdvc = [[ShortcutsDetailViewController alloc] init];
         if (indexPath.row != listOfShortcuts.count) {
+            sdvc.index = indexPath.row;
             sdvc.phrase = [[listOfShortcuts objectAtIndex:indexPath.row] objectForKey:@"phrase"];
             sdvc.shortcut = [[listOfShortcuts objectAtIndex:indexPath.row] objectForKey:@"shortcut"];
         }
@@ -154,17 +162,18 @@
     }
     else if (indexPath.section == 1) {
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
-        controller.mailComposeDelegate = self;
-        [controller setSubject:@"Occuhunt iOS App – Feedback"];
+        controller.mailComposeDelegate = (id) self;
+        [controller setSubject:@"Occuhunt Recruiter iOS App – Feedback"];
         NSArray *toRecipients = [NSArray arrayWithObjects:@"occuhunt@gmail.com", nil];
         [controller setToRecipients:toRecipients];
         [controller setMessageBody:@"" isHTML:NO];
         [self presentViewController:controller animated:YES completion:nil];
     }
+    else if (indexPath.section == 2) {
+        
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 
 /*
 // Override to support conditional editing of the table view.

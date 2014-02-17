@@ -10,8 +10,8 @@
 #import "KLNoteViewController.h"
 #import "ServerIO.h"
 #import "EventListPickerController.h"
-
-@interface KLViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate> {
+#import "PPPinPadViewController.h"
+@interface KLViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate, PinPadPasswordProtocol> {
     ServerIO *thisServer;
     IBOutlet UIBarButtonItem *eventsButton;
     IBOutlet UISegmentedControl *statusSegmentedControl;

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "PPPinPadViewController.h"
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : UITableViewController <PinPadPasswordProtocol>
+
+@property (nonatomic, assign) id delegate;
 
 @end
