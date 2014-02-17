@@ -153,13 +153,17 @@
         [self.eventPickerPopover dismissPopoverAnimated:YES];
         self.eventPickerPopover = nil;
     }
-    self.currentlySelectedEvent = [selectedEvent copy];
-    eventsButton.title = [self.currentlySelectedEvent objectForKey:@"name"];
-    [thisServer getAttendees:[selectedEvent objectForKey:@"id"]];
-    NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
-    [thisServer getAttendeesWithStatus:[selectedEvent objectForKey:@"id"] andCompanyID:companyID];
+    [self selectFair:selectedEvent];
 }
 
+- (void)selectFair:(NSDictionary *)fair{
+    NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
+    
+    self.currentlySelectedEvent = fair;
+    eventsButton.title = [self.currentlySelectedEvent objectForKey:@"name"];
+    [thisServer getAttendees:[fair objectForKey:@"id"]];
+    [thisServer getAttendeesWithStatus:[fair objectForKey:@"id"] andCompanyID:companyID];
+}
 
 #pragma mark - Segemented Control Method
 
@@ -202,6 +206,7 @@
         self.listOfEvents = [response objectForKey:@"objects"];
         if ([self.listOfEvents count] > 0) {
             eventsButton.enabled = YES;
+            [self selectFair:[self.listOfEvents objectAtIndex:0]];
         }
     }
     else if (operation.tag == GETATTENDEESWITHSTATUS) {

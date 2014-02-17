@@ -30,7 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Notes";
-    daltvc = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    daltvc = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
     daltvc.delegate = self;
     
     NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
@@ -55,7 +55,7 @@
     NSDictionary *attribute = @{
                                 NSParagraphStyleAttributeName : paragraphStyle,
                                 NSFontAttributeName : [UIFont fontWithName:@"Proxima Nova" size:20.0],
-                                NSForegroundColorAttributeName : UIColorFromRGB(0x348891)
+                                NSForegroundColorAttributeName : [UIColor blackColor]
                                 };
     daltvc.attributedText = [[NSAttributedString alloc] initWithString:@" " attributes:attribute];
     
@@ -63,19 +63,19 @@
     daltvc.text = @"Write something about this student.";
     daltvc.textColor = [UIColor lightGrayColor]; //optional
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(keyboardWasShown:)
-     name:UIKeyboardWillShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(keyboardWillBeHidden:)
-     name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]
+//     addObserver:self
+//     selector:@selector(keyboardWasShown:)
+//     name:UIKeyboardWillShowNotification object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter]
+//     addObserver:self
+//     selector:@selector(keyboardWillBeHidden:)
+//     name:UIKeyboardWillHideNotification object:nil];
     
     thisServer = [[ServerIO alloc] init];
     thisServer.delegate = self;
-    
+    [daltvc becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,35 +113,48 @@
     return YES;
 }
 
+//- (void)textViewDidBeginEditing:(UITextView *)textView
+//{
+//    if ([textView.text isEqualToString:@"Write something about this student."]) {
+//        textView.text = @"";
+//        textView.textColor = [UIColor blackColor]; //optional
+//    }
+//    [textView becomeFirstResponder];
+//}
+//
+//- (void)textViewDidEndEditing:(UITextView *)textView
+//{
+//    if ([textView.text isEqualToString:@""]) {
+//        textView.text = @"Write something about this student.";
+//        textView.textColor = [UIColor lightGrayColor]; //optional
+//    }
+//    [textView resignFirstResponder];
+//}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:@"Write something about this student."]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor]; //optional
-    }
-    [textView becomeFirstResponder];
+    [self animateTextView: YES];
+    [daltvc becomeFirstResponder];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:@""]) {
-        textView.text = @"Write something about this student.";
-        textView.textColor = [UIColor lightGrayColor]; //optional
-    }
-    [textView resignFirstResponder];
+    [self animateTextView:NO];
+    [daltvc resignFirstResponder];
 }
 
-- (void)keyboardWasShown:(NSNotification*)notification {
-    NSDictionary* info = [notification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    
-    daltvc.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
-    daltvc.scrollIndicatorInsets = daltvc.contentInset;
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)notification {
-    daltvc.contentInset = UIEdgeInsetsZero;
-    daltvc.scrollIndicatorInsets = UIEdgeInsetsZero;
+- (void) animateTextView:(BOOL) up
+{
+//    const int movementDistance =264; // tweak as needed
+//    const float movementDuration = 0.3f; // tweak as needed
+//    int movement= movement = (up ? -movementDistance : movementDistance);
+//    NSLog(@"%d",movement);
+//    
+//    [UIView beginAnimations: @"anim" context: nil];
+//    [UIView setAnimationBeginsFromCurrentState: YES];
+//    [UIView setAnimationDuration: movementDuration];
+//    daltvc.frame = CGRectOffset(daltvc.frame, 0, movement);
+//    [UIView commitAnimations];
 }
 
 #pragma mark - Server IO Delegate

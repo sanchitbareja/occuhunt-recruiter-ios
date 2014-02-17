@@ -67,7 +67,7 @@
     [constructString appendString:@"}"];
     NSLog(@"construct string = %@", constructString);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string]
-                                                           cachePolicy:NSURLRequestReturnCacheDataElseLoad  timeoutInterval:10];
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData  timeoutInterval:10];
     
     [request setHTTPMethod:@"POST"];
     [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -122,7 +122,7 @@
     [constructString appendString:@"}"];
     NSLog(@"construct string = %@", constructString);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string]
-                                                           cachePolicy:NSURLRequestReturnCacheDataElseLoad  timeoutInterval:10];
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData  timeoutInterval:10];
     
     [request setHTTPMethod:@"PUT"];
     [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -171,7 +171,7 @@
     [constructString appendString:@"}"];
     NSLog(@"construct string = %@", constructString);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string]
-                                                           cachePolicy:NSURLRequestReturnCacheDataElseLoad  timeoutInterval:10];
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData  timeoutInterval:10];
     
     [request setHTTPMethod:@"PUT"];
     [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -229,7 +229,7 @@
     NSString *newString = [NSString stringWithFormat:@"{\"objects\":[%@]}", constructString];
     NSLog(@"new string = %@", newString);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string]
-                                                           cachePolicy:NSURLRequestReturnCacheDataElseLoad  timeoutInterval:10];
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData  timeoutInterval:10];
     
     [request setHTTPMethod:@"PATCH"];
     [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];

@@ -70,7 +70,7 @@ typedef enum {
                                         self.closeViewSize.width,
                                         self.closeViewSize.height);
     
-    return enterScreenRect;
+    return CGRectZero;
 }
 
 - (CGRect)_closeViewOnScreenRect {
@@ -82,7 +82,7 @@ typedef enum {
                                      self.closeViewSize.width,
                                      self.closeViewSize.height);
     
-    return onScreenRect;
+    return CGRectZero;
 }
 
 - (CGRect)_closeViewEnlargedRect {
@@ -97,7 +97,7 @@ typedef enum {
                                      self.closeViewSize.width + 2 * delta,
                                      self.closeViewSize.height + 2 * delta);
     
-    return enlargedRect;
+    return CGRectZero;
 }
 
 - (CGRect)_dropArea

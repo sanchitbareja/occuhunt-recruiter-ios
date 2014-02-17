@@ -128,6 +128,10 @@
         if (self.delegate) {
             [[NSUserDefaults standardUserDefaults] setObject:[response objectForKey:@"company_id"] forKey:@"company_id"];
             [self.delegate dismissViewControllerAnimated:YES completion:nil];
+            KLViewController *delegate = (KLViewController *)self.delegate;
+            if ([delegate respondsToSelector:@selector(chooseEvents:)]) {
+//                [delegate chooseEvents:nil];
+            }
         }
     }
     else {
