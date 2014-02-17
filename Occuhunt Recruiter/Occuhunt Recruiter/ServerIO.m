@@ -117,6 +117,7 @@
     
     [request setHTTPMethod:@"PUT"];
     [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue: @"json" forHTTPHeaderField:@"Data-Type"];
     [request setHTTPBody:[constructString dataUsingEncoding:NSUTF8StringEncoding]];
     
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];

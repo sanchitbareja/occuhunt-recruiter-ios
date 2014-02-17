@@ -89,8 +89,9 @@
 
 - (IBAction)openSettings:(id)sender {
     SettingsViewController *svc = [[SettingsViewController alloc] init];
-    svc.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:svc animated:YES completion:nil];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:svc];
+    nc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 #pragma mark - EventPickerDelegate method

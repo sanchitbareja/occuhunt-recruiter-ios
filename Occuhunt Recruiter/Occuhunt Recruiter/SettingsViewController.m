@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "ShortcutsDetailViewController.h"
 
 @interface SettingsViewController ()
 
@@ -16,7 +17,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithStyle:style];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         // Custom initialization
     }
@@ -26,12 +27,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Settings";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Shortcuts"];
+
+    
+    // TEST DATA
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,29 +54,117 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"SHORTCUTS";
+            break;
+        case 1:
+            return @"GENERAL";
+            break;
+        case 2:
+            return @"ACCOUNT";
+            break;
+        default:
+            break;
+    }
+    return @"";
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
+    switch (section) {
+        case 0:
+            return listOfShortcuts.count+1;
+            break;
+        case 1:
+            return 1;
+            break;
+        case 2:
+            return 2;
+            break;
+        default:
+            break;
+    }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
+
     
     // Configure the cell...
+    switch (indexPath.section) {
+        case 0:
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Shortcuts"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            if (indexPath.row == listOfShortcuts.count) {
+                cell.textLabel.text = @"Add new shortcut..";
+                return cell;
+            }
+            cell.textLabel.text = [[listOfShortcuts objectAtIndex:indexPath.row] objectForKey:@"phrase"];
+            cell.detailTextLabel.text = [[listOfShortcuts objectAtIndex:indexPath.row] objectForKey:@"shortcut"];
+            cell.tag = 111;
+            break;
+        case 1:
+            cell.textLabel.text =  @"Send Feedback";
+            break;
+        case 2:
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"Set PIN";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+            else if (indexPath.row == 1) {
+                cell.textLabel.text = @"Log Out";
+            }
+            break;
+        default:
+            break;
+    }
     
     return cell;
 }
+
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
+        ShortcutsDetailViewController *sdvc = [[ShortcutsDetailViewController alloc] init];
+        if (indexPath.row != listOfShortcuts.count) {
+            sdvc.phrase = [[listOfShortcuts objectAtIndex:indexPath.row] objectForKey:@"phrase"];
+            sdvc.shortcut = [[listOfShortcuts objectAtIndex:indexPath.row] objectForKey:@"shortcut"];
+        }
+        [self.navigationController pushViewController:sdvc animated:YES];
+    }
+    else if (indexPath.section == 1) {
+        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        [controller setSubject:@"Occuhunt iOS App – Feedback"];
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"occuhunt@gmail.com", nil];
+        [controller setToRecipients:toRecipients];
+        [controller setMessageBody:@"" isHTML:NO];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 
 /*
 // Override to support conditional editing of the table view.
