@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
   - AsyncImageView (1.5.1)
   - BButton (3.2.3)
+  - DALinedTextView (0.0.1)
   - KLNoteViewController (1.0)
   - Mixpanel (2.3.1)
   - SDWebImage (3.5.2):
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - AFNetworking
   - AsyncImageView
   - BButton
+  - DALinedTextView
   - KLNoteViewController
   - Mixpanel
   - SDWebImage
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
   AsyncImageView: 686febb2b2a923353ede67c529d257498059852d
   BButton: b405745cd7ccc9444c696b8690fb79541623766a
+  DALinedTextView: a965e7097fed14ef4b5a155d0ec21f300b0d0658
   KLNoteViewController: 74c80408021ebd482e2af8d162b14e23041fb06d
   Mixpanel: 8d189c58bcaac429de9cb4f18a54621df99b7e38
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e

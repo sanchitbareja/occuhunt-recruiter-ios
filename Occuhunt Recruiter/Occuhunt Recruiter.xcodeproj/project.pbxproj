@@ -40,6 +40,7 @@
 		8F9C571218ACAF4300ECFC19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EE18ACAF4300ECFC19 /* UIKit.framework */; };
 		8F9C571A18ACAF4300ECFC19 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C571818ACAF4300ECFC19 /* InfoPlist.strings */; };
 		8F9C571C18ACAF4300ECFC19 /* Occuhunt_RecruiterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C571B18ACAF4300ECFC19 /* Occuhunt_RecruiterTests.m */; };
+		8FA320F218B18DD400BF6CD4 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA320F118B18DD400BF6CD4 /* NotesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		8F9C571718ACAF4300ECFC19 /* Occuhunt RecruiterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Occuhunt RecruiterTests-Info.plist"; sourceTree = "<group>"; };
 		8F9C571918ACAF4300ECFC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8F9C571B18ACAF4300ECFC19 /* Occuhunt_RecruiterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Occuhunt_RecruiterTests.m; sourceTree = "<group>"; };
+		8FA320F018B18DD400BF6CD4 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
+		8FA320F118B18DD400BF6CD4 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
 		9BD462FC6FEB43D6BB0CA682 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -188,6 +191,8 @@
 				8F16469918AF38CB00BA7521 /* FairListViewController.m */,
 				8F1646B818AF535600BA7521 /* PersonViewController.h */,
 				8F1646B918AF535600BA7521 /* PersonViewController.m */,
+				8FA320F018B18DD400BF6CD4 /* NotesViewController.h */,
+				8FA320F118B18DD400BF6CD4 /* NotesViewController.m */,
 				8F16468F18AF337800BA7521 /* KLCustomViewController.h */,
 				8F16469018AF337800BA7521 /* KLCustomViewController.m */,
 				8F16469318AF339500BA7521 /* NavigationControllerData.plist */,
@@ -383,6 +388,7 @@
 				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,
 				8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */,
 				8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */,
+				8FA320F218B18DD400BF6CD4 /* NotesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

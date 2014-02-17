@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-DALinedTextView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-KLNoteViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,57 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A8833ABF5BC48E7A0E5A064</key>
+		<key>0A4DBB6222AE4CA799BDD4F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0B4DB9E6A2D14328B3441337</key>
+		<key>0D51932AF2DB44AE8C2C844D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3173B8B836094017B2BD4679</key>
+		<key>1517BF1440864A03950E69F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3DD87EBAE5824B4F9EDDC0DC</key>
+		<key>4196D85342AA4E54BC8122ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>510308D7706D4B438313EA5F</key>
+		<key>45EE5D34D4CF4574B949F4D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>743568E637AC443A8E7A7DC5</key>
+		<key>5D11622C1D5D40B4B007673A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88342034D1C64AA5881E7401</key>
+		<key>73D234E6EB11497198BA7D6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>980A41F41527439AB61DFEC1</key>
+		<key>A3290D8E5F564E2E9405E32E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C07CAF4B5851414FA32A187D</key>
+		<key>AE183BCB9A1345B9B3D9DB87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E8B7966456334F35AF142AF3</key>
+		<key>BC80279B7A514FF184ADA88F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EADAA154058F4850BFD68007</key>
+		<key>EF7AB71CB0B6449A875338EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F75E872723F04282B184B15E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

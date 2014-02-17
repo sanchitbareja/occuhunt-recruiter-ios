@@ -126,8 +126,8 @@
                 CGRect screenRect = [[UIScreen mainScreen] bounds];
                 CGFloat screenWidth = screenRect.size.width;
                 weakSelf.portfolioScrollView.contentSize = CGSizeMake(screenWidth, image.size.height);
-                weakSelf.portfolioScrollView.zoomScale = 320/image.size.width;
-                weakSelf.portfolioScrollView.minimumZoomScale = 320/image.size.width;
+                weakSelf.portfolioScrollView.zoomScale = screenWidth/image.size.width;
+                weakSelf.portfolioScrollView.minimumZoomScale = screenWidth/image.size.width;
             } usingProgressView:nil];
         }
     }

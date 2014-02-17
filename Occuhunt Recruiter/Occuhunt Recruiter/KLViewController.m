@@ -10,6 +10,7 @@
 #import "KLCustomViewController.h"
 #import "FairListViewController.h"
 #import "PersonViewController.h"
+#import "NotesViewController.h"
 
 @interface KLViewController ()
 
@@ -59,6 +60,11 @@
         UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:pvc];
         return navC;
     }
+    else if (index == 2) {
+        NotesViewController *nvc = [[NotesViewController alloc] init];
+        UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:nvc];
+        return navC;
+    }
     //Get the relevant data for the navigation controller
     NSDictionary* navDict = [self.viewControllerData objectAtIndex: index];
     
@@ -82,4 +88,5 @@
     [self reloadDataAnimated:YES];
     
 }
+
 @end

@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_BButton 2
 #define COCOAPODS_VERSION_PATCH_BButton 3
 
+// DALinedTextView
+#define COCOAPODS_POD_AVAILABLE_DALinedTextView
+#define COCOAPODS_VERSION_MAJOR_DALinedTextView 0
+#define COCOAPODS_VERSION_MINOR_DALinedTextView 0
+#define COCOAPODS_VERSION_PATCH_DALinedTextView 1
+
 // KLNoteViewController
 #define COCOAPODS_POD_AVAILABLE_KLNoteViewController
 #define COCOAPODS_VERSION_MAJOR_KLNoteViewController 1
