@@ -33,6 +33,7 @@
 		8F608D6A18B1F4DD008F45EA /* PPPinCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F608D6518B1F4DD008F45EA /* PPPinCircleView.m */; };
 		8F608D6B18B1F4DD008F45EA /* PPPinPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */; };
 		8F608D6C18B1F4DD008F45EA /* PPPinPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */; };
+		8F608D7018B1FBDC008F45EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F608D6F18B1FBDC008F45EA /* LoginViewController.m */; };
 		8F9C56EB18ACAF4300ECFC19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */; };
 		8F9C56ED18ACAF4300ECFC19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EC18ACAF4300ECFC19 /* CoreGraphics.framework */; };
 		8F9C56EF18ACAF4300ECFC19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F9C56EE18ACAF4300ECFC19 /* UIKit.framework */; };
@@ -97,6 +98,8 @@
 		8F608D6618B1F4DD008F45EA /* PPPinPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPinPadViewController.h; sourceTree = "<group>"; };
 		8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPinPadViewController.m; sourceTree = "<group>"; };
 		8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPinPadViewController.xib; sourceTree = "<group>"; };
+		8F608D6E18B1FBDC008F45EA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8F608D6F18B1FBDC008F45EA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8F9C56E718ACAF4300ECFC19 /* Occuhunt Recruiter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Occuhunt Recruiter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9C56EA18ACAF4300ECFC19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8F9C56EC18ACAF4300ECFC19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +166,20 @@
 			name = "Proxima Nova";
 			sourceTree = "<group>";
 		};
+		8F608D6D18B1F570008F45EA /* PIN */ = {
+			isa = PBXGroup;
+			children = (
+				8F608D6218B1F4DD008F45EA /* PPCircleButton.h */,
+				8F608D6318B1F4DD008F45EA /* PPCircleButton.m */,
+				8F608D6418B1F4DD008F45EA /* PPPinCircleView.h */,
+				8F608D6518B1F4DD008F45EA /* PPPinCircleView.m */,
+				8F608D6618B1F4DD008F45EA /* PPPinPadViewController.h */,
+				8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */,
+				8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */,
+			);
+			name = PIN;
+			sourceTree = "<group>";
+		};
 		8F9C56DE18ACAF4300ECFC19 = {
 			isa = PBXGroup;
 			children = (
@@ -218,17 +235,13 @@
 				8F11C58618B1E47500409A34 /* SettingsViewController.m */,
 				8F11C58A18B1E9D600409A34 /* ShortcutsDetailViewController.h */,
 				8F11C58B18B1E9D600409A34 /* ShortcutsDetailViewController.m */,
+				8F608D6E18B1FBDC008F45EA /* LoginViewController.h */,
+				8F608D6F18B1FBDC008F45EA /* LoginViewController.m */,
 				8F16469318AF339500BA7521 /* NavigationControllerData.plist */,
 				8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */,
 				8F1646B518AF499C00BA7521 /* SharpLabel.h */,
 				8F1646B618AF499C00BA7521 /* SharpLabel.m */,
-				8F608D6218B1F4DD008F45EA /* PPCircleButton.h */,
-				8F608D6318B1F4DD008F45EA /* PPCircleButton.m */,
-				8F608D6418B1F4DD008F45EA /* PPPinCircleView.h */,
-				8F608D6518B1F4DD008F45EA /* PPPinCircleView.m */,
-				8F608D6618B1F4DD008F45EA /* PPPinPadViewController.h */,
-				8F608D6718B1F4DD008F45EA /* PPPinPadViewController.m */,
-				8F608D6818B1F4DD008F45EA /* PPPinPadViewController.xib */,
+				8F608D6D18B1F570008F45EA /* PIN */,
 				8F9C570818ACAF4300ECFC19 /* Images.xcassets */,
 				8F9C56F118ACAF4300ECFC19 /* Supporting Files */,
 			);
@@ -416,6 +429,7 @@
 				8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */,
 				8F9C56FB18ACAF4300ECFC19 /* AppDelegate.m in Sources */,
 				8F608D6918B1F4DD008F45EA /* PPCircleButton.m in Sources */,
+				8F608D7018B1FBDC008F45EA /* LoginViewController.m in Sources */,
 				8F9C56F718ACAF4300ECFC19 /* main.m in Sources */,
 				8F11C58718B1E47500409A34 /* SettingsViewController.m in Sources */,
 				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,

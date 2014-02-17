@@ -129,13 +129,7 @@
             cell.textLabel.text =  @"Send Feedback";
             break;
         case 2:
-            if (indexPath.row == 0) {
-                cell.textLabel.text = @"Set PIN";
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
-            else if (indexPath.row == 1) {
-                cell.textLabel.text = @"Log Out";
-            }
+            cell.textLabel.text = @"Log Out";
             break;
         default:
             break;
@@ -161,16 +155,20 @@
         [self.navigationController pushViewController:sdvc animated:YES];
     }
     else if (indexPath.section == 1) {
-        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
-        controller.mailComposeDelegate = (id) self;
-        [controller setSubject:@"Occuhunt Recruiter iOS App – Feedback"];
-        NSArray *toRecipients = [NSArray arrayWithObjects:@"occuhunt@gmail.com", nil];
-        [controller setToRecipients:toRecipients];
-        [controller setMessageBody:@"" isHTML:NO];
-        [self presentViewController:controller animated:YES completion:nil];
+        NSString *recipients = @"mailto:occuhunt@gmail.com&subject=Occuhunt iOS Recruiter App Feedback";
+        
+        
+        NSString *email = [NSString stringWithFormat:@"%@", recipients];
+        
+        email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
     }
     else if (indexPath.section == 2) {
-        
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"company_id"];
+        if (self.delegate) {
+            [self.delegate dismissViewControllerAnimated:YES completion:nil];
+        }
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

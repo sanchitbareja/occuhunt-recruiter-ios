@@ -90,9 +90,10 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [daltvc resignFirstResponder];
-    if (self.userNotes.length > 0) {
+    if (daltvc.text.length > 0) {
         NSLog(@"Saving!");
-        [thisServer updateApplicationWithApplicationID:self.applicationID andNote:self.userNotes];
+        self.userNotes = daltvc.text;
+        [thisServer updateApplicationWithApplicationID:self.applicationID andNote:daltvc.text];
     }
 }
 

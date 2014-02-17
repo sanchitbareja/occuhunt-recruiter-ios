@@ -106,8 +106,17 @@
     NSMutableString *constructString = [NSMutableString stringWithString:@"{"];
     for (NSString *key in args) {
         NSString *object = [args objectForKey:key];
+        NSMutableString *s = [NSMutableString stringWithString:object];
+        [s replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        [s replaceOccurrencesOfString:@"/" withString:@"\\/" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        [s replaceOccurrencesOfString:@"\n" withString:@"\\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        [s replaceOccurrencesOfString:@"\b" withString:@"\\b" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        [s replaceOccurrencesOfString:@"\f" withString:@"\\f" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        [s replaceOccurrencesOfString:@"\r" withString:@"\\r" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        [s replaceOccurrencesOfString:@"\t" withString:@"\\t" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+        
         // ONLY VALID FOR STRINGS PLEASE CHECK
-        [constructString appendFormat:@"\"%@\":\"%@\",", key, object];
+        [constructString appendFormat:@"\"%@\":\"%@\",", key, s];
     }
     constructString = [NSMutableString stringWithString:[constructString substringToIndex:constructString.length-1]];
     [constructString appendString:@"}"];
@@ -134,6 +143,55 @@
         if (self.delegate) {
             [self.delegate returnFailure:operation error:error];
         }
+        
+    }];
+    [op start];
+    return;
+}
+
+
+
+- (void)makeJSONPutWithNumbers:(NSString *)string andArgs:(NSDictionary *)args andTag:(int)httpCallTag{
+    if (!self.delegate) {
+        NSLog(@"No delegate. Please check.");
+    }
+    if ([[args allKeys] count] == 0) {
+        NSLog(@"Empty dictionary");
+        return;
+    }
+    NSLog(@"Making call to %@", string);
+    
+    NSMutableString *constructString = [NSMutableString stringWithString:@"{"];
+    for (NSString *key in args) {
+        NSString *object = [args objectForKey:key];
+        // ONLY VALID FOR STRINGS PLEASE CHECK
+        [constructString appendFormat:@"\"%@\":%@,", key, object];
+    }
+    constructString = [NSMutableString stringWithString:[constructString substringToIndex:constructString.length-1]];
+    [constructString appendString:@"}"];
+    NSLog(@"construct string = %@", constructString);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string]
+                                                           cachePolicy:NSURLRequestReturnCacheDataElseLoad  timeoutInterval:10];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue: @"json" forHTTPHeaderField:@"Data-Type"];
+    [request setHTTPBody:[constructString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.tag = httpCallTag;
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON responseObject: %@ ",responseObject);
+//        if (self.delegate) {
+//            [self.delegate returnData:operation response:responseObject];
+//        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+//        if (self.delegate) {
+//            [self.delegate returnFailure:operation error:error];
+//        }
         
     }];
     [op start];
@@ -196,6 +254,32 @@
     [op start];
     return;
 }
+
+
+- (void)makeJSONPostLogin:(NSString *)string andArgs:(NSDictionary *)args andTag:(int)httpCallTag{
+    if (!self.delegate) {
+        NSLog(@"No delegate. Please check.");
+    }
+    if ([[args allKeys] count] == 0) {
+        NSLog(@"Empty dictionary");
+        return;
+    }
+    NSLog(@"Making call to %@", string);
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:@"http://occuhunt.com/recruiter/login/third_party/" parameters:args success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (self.delegate) {
+            [self.delegate returnData:operation response:responseObject];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (self.delegate) {
+            [self.delegate returnFailure:operation error:error];
+        }
+    }];
+    return;
+}
+
 
 - (void)serverSanityCheck {
     NSString *url = @"http://occuhunt.com/";
@@ -277,5 +361,14 @@
     [self makeJSONPut:url andArgs:@{@"note":note} andTag:UPDATEAPPLICATION];
 }
 
+- (void)updateApplicationWithApplicationID:(NSString *)applicationID andStatus:(NSString *)status{
+    NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/api/v1/applications/%@/", applicationID];
+    [self makeJSONPutWithNumbers:url andArgs:@{@"status":status} andTag:UPDATESTATUS];
+}
+
+- (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password {
+    NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/recruiter/login/third_party/"];
+    [self makeJSONPostLogin:url andArgs:@{@"username":username, @"password":password} andTag:LOGINRECRUITER];
+}
 
 @end

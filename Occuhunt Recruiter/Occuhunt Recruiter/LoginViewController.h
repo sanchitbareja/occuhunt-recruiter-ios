@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerIO.h"
 
-@interface ShortcutsDetailViewController : UITableViewController <UITextFieldDelegate> {
-    UITextField *phraseField;
-    UITextField *shortcutTextField;
-    UIBarButtonItem *saveButton;
+@interface LoginViewController : UITableViewController <UITextFieldDelegate, ServerIODelegate> {
+    UITextField *usernameField;
+    UITextField *passwordField;
+    UIBarButtonItem *helpButton;
+    UIBarButtonItem *loginButton;
+    ServerIO *thisServer;
 }
 
 @property (nonatomic, assign) int index;
 @property (nonatomic, strong) NSString *phrase;
 @property (nonatomic, strong) NSString *shortcut;
+
+@property (nonatomic, assign) id delegate;
 
 @end

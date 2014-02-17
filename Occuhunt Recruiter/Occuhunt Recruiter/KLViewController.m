@@ -14,6 +14,10 @@
 #import "FairListViewController.h"
 #import "SharpLabel.h"
 #import "SettingsViewController.h"
+#import <VENVersionTracker/VENVersionTracker.h>
+#import <VENVersionTracker/VENVersion.h>
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import "LoginViewController.h"
 
 @interface KLViewController ()
 
@@ -58,6 +62,36 @@
     self.interviewingList = [[NSMutableArray alloc] init];
     self.listOfAttendees = [[NSMutableArray alloc] init];
     
+    [VENVersionTracker beginTrackingVersionForChannel:@"production"
+                                       serviceBaseUrl:@"http://www.occuhunt.com/static/version/appversion-recruiter.json"
+                                         timeInterval:1800
+                                          withHandler:^(VENVersionTrackerState state, VENVersion *version) {
+                                              
+                                              dispatch_sync(dispatch_get_main_queue(), ^{
+                                                  
+                                                  self.appStoreLink = version.installUrl;
+                                                  switch (state) {
+                                                      case VENVersionTrackerStateDeprecated:
+                                                          [version install];
+                                                          break;
+                                                          
+                                                      case VENVersionTrackerStateOutdated:
+                                                          // Offer the user the option to update
+                                                          [self callAlertView];
+                                                          break;
+                                                      default:
+                                                          break;
+                                                  }
+                                              });
+                                          }];
+    
+//    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"]) {
+        LoginViewController *lvc = [[LoginViewController alloc] init];
+        lvc.delegate = self;
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:lvc];
+        nc.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:nc animated:YES completion:nil];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,6 +100,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+- (void)callAlertView {
+    [UIAlertView showWithTitle:@"Update Available"
+                       message:@"There is a new version of Occuhunt. Update now?"
+             cancelButtonTitle:@"Not Now"
+             otherButtonTitles:@[@"Update"]
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          if (buttonIndex == [alertView cancelButtonIndex]) {
+                              NSLog(@"Cancelled");
+                          } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Update"]) {
+                              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.appStoreLink]];
+                          }
+                      }];
+}
 
 #pragma mark - IBActions
 - (IBAction)chooseEvents:(id)sender
@@ -107,9 +156,10 @@
     self.currentlySelectedEvent = [selectedEvent copy];
     eventsButton.title = [self.currentlySelectedEvent objectForKey:@"name"];
     [thisServer getAttendees:[selectedEvent objectForKey:@"id"]];
-    [thisServer getAttendeesWithStatus:[selectedEvent objectForKey:@"id"] andCompanyID:@"243"];
-#warning to change ID
+    NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
+    [thisServer getAttendeesWithStatus:[selectedEvent objectForKey:@"id"] andCompanyID:companyID];
 }
+
 
 #pragma mark - Segemented Control Method
 
@@ -157,6 +207,10 @@
     else if (operation.tag == GETATTENDEESWITHSTATUS) {
         if ([[response objectForKey:@"response"] objectForKey:@"applications"]) {
             self.allFourLists = [[response objectForKey:@"response"] objectForKey:@"applications"];
+            [self.appliedList removeAllObjects];
+            [self.interactedWithList removeAllObjects];
+            [self.rejectedList removeAllObjects];
+            [self.interviewingList removeAllObjects];
             for (NSDictionary *eachApplicant in self.allFourLists) {
                 switch ([[eachApplicant objectForKey:@"status"] integerValue]) {
                     case 1:

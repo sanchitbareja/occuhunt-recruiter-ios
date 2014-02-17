@@ -10,8 +10,7 @@
 #import "KLNoteViewController.h"
 #import "ServerIO.h"
 #import "EventListPickerController.h"
-#import "PPPinPadViewController.h"
-@interface KLViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate, PinPadPasswordProtocol> {
+@interface KLViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate> {
     ServerIO *thisServer;
     IBOutlet UIBarButtonItem *eventsButton;
     IBOutlet UISegmentedControl *statusSegmentedControl;
@@ -20,6 +19,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *occuhuntRecruiterLabel;
 @property (nonatomic, strong) NSArray* viewControllerData;
+@property (nonatomic, strong) NSString *appStoreLink;
 
 @property (nonatomic, strong) NSMutableArray *listOfAttendees;
 @property (nonatomic, strong) NSArray *listOfEvents;

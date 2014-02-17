@@ -44,8 +44,14 @@
     UIBarButtonItem *fairButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     self.navigationItem.leftBarButtonItem = fairButtonItem;
     
-    UIBarButtonItem *statusButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Status: Applied" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.rightBarButtonItem = statusButtonItem;
+    UIBarButtonItem *rejectButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reject" style:UIBarButtonItemStylePlain target:self action:@selector(rejectApplicant)];
+    UIBarButtonItem *fixedItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedItem.width = 20;
+    [rejectButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xfc0041)} forState:UIControlStateNormal];
+    UIBarButtonItem *interviewButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Interview" style:UIBarButtonItemStylePlain target:self action:@selector(interviewApplicant)];
+    [interviewButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x005f69)} forState:UIControlStateNormal];
+
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:interviewButtonItem, fixedItem, rejectButtonItem, nil];
     
     CGRect tempRect = self.view.frame;
     tempRect.origin.y += 64;
@@ -81,9 +87,8 @@
     
     thisServer = [[ServerIO alloc] init];
     thisServer.delegate = (id) self;
-    
-    [thisServer getSpecificApplicationWithUserID:self.userID andCompanyID:@"243" andEventID:self.eventID];
-#warning TO CHANGE COMPANY ID
+    NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
+    [thisServer getSpecificApplicationWithUserID:self.userID andCompanyID:companyID andEventID:self.eventID];
     
     
     CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"Favicon4.png"]];
@@ -113,6 +118,26 @@
     }
     if (_draggingCoordinator) {
         [_draggingCoordinator dismissPublic];
+    }
+}
+
+- (void)rejectApplicant {
+    //3
+    NSString *applicationID = [self.userApplication objectForKey:@"id"];
+    [thisServer updateApplicationWithApplicationID:applicationID andStatus:@"3"];
+    
+    if (self.delegate) {
+        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)interviewApplicant {
+    //4
+    NSString *applicationID = [self.userApplication objectForKey:@"id"];
+    [thisServer updateApplicationWithApplicationID:applicationID andStatus:@"4"];
+    
+    if (self.delegate) {
+        [self.delegate dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

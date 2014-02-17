@@ -25,6 +25,8 @@
 - (void)getAttendeesWithStatus:(NSString *)eventID andCompanyID:(NSString *)companyID;
 - (void)getSpecificApplicationWithUserID:(NSString *)userID andCompanyID:(NSString *)companyID andEventID:(NSString *)eventID;
 - (void)updateApplicationWithApplicationID:(NSString *)applicationID andNote:(NSString *)note;
+- (void)updateApplicationWithApplicationID:(NSString *)applicationID andStatus:(NSString *)status;
+- (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password;
 
 @property (nonatomic, assign) id <ServerIODelegate> delegate;
 
