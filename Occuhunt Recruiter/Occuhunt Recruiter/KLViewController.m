@@ -22,7 +22,7 @@
 
 - (void)loadView {
     [super loadView];
-    self.occuhuntRecruiterLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:28];
+    self.occuhuntRecruiterLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:26];
     self.occuhuntRecruiterLabel.textColor = UIColorFromRGB(0x939393);
 
 }
@@ -224,12 +224,12 @@
     NSLog(@"Selected");
     PersonViewController *pvc = [[PersonViewController alloc] init];
     NSDictionary *currentlySelectedUser = [[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"];
-    pvc.userID = [currentlySelectedUser objectForKey:@"linkedin_uid"];
-    if (pvc.userID.length < 1) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:@"His profile is not set up right now." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    if ([currentlySelectedUser objectForKey:@"linkedin_uid"] == [NSNull null]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:@"The applicant's profile is not set up right now." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
+    pvc.userID = [currentlySelectedUser objectForKey:@"linkedin_uid"];
     pvc.title = [NSString stringWithFormat:@"%@ %@", [currentlySelectedUser objectForKey:@"first_name"], [currentlySelectedUser objectForKey:@"last_name"]];
     pvc.delegate = (id) self;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];

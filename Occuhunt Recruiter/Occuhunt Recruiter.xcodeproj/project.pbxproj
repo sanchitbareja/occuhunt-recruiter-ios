@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15B7EFD4DC3B4D21BA1EAEB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD462FC6FEB43D6BB0CA682 /* libPods.a */; };
 		8F11C58218B1A0B800409A34 /* EventListPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11C58118B1A0B800409A34 /* EventListPickerController.m */; };
+		8F11C58418B1B66000409A34 /* Favicon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F11C58318B1B66000409A34 /* Favicon4.png */; };
 		8F16469118AF337800BA7521 /* KLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16468E18AF337800BA7521 /* KLViewController.m */; };
 		8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469318AF339500BA7521 /* NavigationControllerData.plist */; };
 		8F16469A18AF38CB00BA7521 /* FairListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16469918AF38CB00BA7521 /* FairListViewController.m */; };
@@ -57,6 +58,7 @@
 		64978D7307DD4B71A52DFBCC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8F11C58018B1A0B800409A34 /* EventListPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListPickerController.h; sourceTree = "<group>"; };
 		8F11C58118B1A0B800409A34 /* EventListPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListPickerController.m; sourceTree = "<group>"; };
+		8F11C58318B1B66000409A34 /* Favicon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Favicon4.png; sourceTree = "<group>"; };
 		8F16468D18AF337800BA7521 /* KLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLViewController.h; sourceTree = "<group>"; };
 		8F16468E18AF337800BA7521 /* KLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLViewController.m; sourceTree = "<group>"; };
 		8F16469318AF339500BA7521 /* NavigationControllerData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NavigationControllerData.plist; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				8F16469918AF38CB00BA7521 /* FairListViewController.m */,
 				8F1646B818AF535600BA7521 /* PersonViewController.h */,
 				8F1646B918AF535600BA7521 /* PersonViewController.m */,
+				8F11C58318B1B66000409A34 /* Favicon4.png */,
 				8FA320F018B18DD400BF6CD4 /* NotesViewController.h */,
 				8FA320F118B18DD400BF6CD4 /* NotesViewController.m */,
 				8F16469318AF339500BA7521 /* NavigationControllerData.plist */,
@@ -321,6 +324,7 @@
 				8F9C570918ACAF4300ECFC19 /* Images.xcassets in Resources */,
 				8F1646AC18AF45C700BA7521 /* ProximaNova-LightItalic.otf in Resources */,
 				8F1646AF18AF45C700BA7521 /* ProximaNova-Semibold.otf in Resources */,
+				8F11C58418B1B66000409A34 /* Favicon4.png in Resources */,
 				8F9C56FE18ACAF4300ECFC19 /* Main_iPhone.storyboard in Resources */,
 				8F1646AB18AF45C700BA7521 /* ProximaNova-Light.otf in Resources */,
 				8F1646AD18AF45C700BA7521 /* ProximaNova-RegItalic.otf in Resources */,

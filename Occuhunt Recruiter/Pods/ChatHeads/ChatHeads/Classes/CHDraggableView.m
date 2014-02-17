@@ -26,6 +26,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        CGRect tempRect = self.frame;
+        tempRect.origin.y += 70;
+        tempRect.origin.x += 8;
+        self.frame = tempRect;
     }
     return self;
 }

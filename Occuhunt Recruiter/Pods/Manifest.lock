@@ -46,6 +46,7 @@ DEPENDENCIES:
   - Mixpanel
   - SDWebImage
   - SDWebImage-ProgressView
+  - SKBounceAnimation
   - SSKeychain
   - UIAlertView+Blocks
   - VENVersionTracker (~> 0.1.0)

@@ -110,7 +110,7 @@ typedef enum {
     CGRect slice;
     CGRect remainder;
     CGRectDivide([self.window.screen applicationFrame], &slice, &remainder, CGRectGetHeight(CGRectInset(_draggableViewBounds, -10, 0)), CGRectMinYEdge);
-    return slice;
+    return CGRectMake(0, -20, self.window.screen.applicationFrame.size.width, 500);
 }
 
 - (CGRectEdge)_destinationEdgeForReleasePointInCurrentState:(CGPoint)releasePoint
@@ -156,7 +156,6 @@ typedef enum {
     }else{  //ChatHead will snap only to right edge
         destinationX = CGRectGetMaxX(dropArea) - midXDragView;
     }
-    
     return CGPointMake(destinationX, destinationY);
 }
 
@@ -287,7 +286,8 @@ typedef enum {
 - (void)_animateViewToConversationArea:(CHDraggableView *)view
 {
     CGRect conversationArea = [self _conversationArea];
-    CGPoint center = CGPointMake(CGRectGetMidX(conversationArea), CGRectGetMidY(conversationArea));
+//    CGPoint center = CGPointMake(CGRectGetMidX(conversationArea), CGRectGetMidY(conversationArea));
+    CGPoint center = CGPointMake(view.center.x, CGRectGetMidY(conversationArea)+230); // Animation override Sid
     [view snapViewCenterToPoint:center edge:[self _destinationEdgeForReleasePointInCurrentState:view.center]];
 }
 
@@ -326,6 +326,10 @@ typedef enum {
     }
 }
 
+- (void)dismissPublic {
+    [self _dismissPresentedNavigationController];
+}
+
 - (void)_dismissPresentedNavigationController
 {
     UINavigationController *reference = _presentedNavigationController;
@@ -340,8 +344,8 @@ typedef enum {
     CGAffineTransform transformStep1 = CGAffineTransformMakeScale(1.1f, 1.1f);
     CGAffineTransform transformStep2 = CGAffineTransformMakeScale(1, 1);
     
-    _backgroundView = [[UIView alloc] initWithFrame:[self.window bounds]];
-    _backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.5f];
+    _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 500, self.window.bounds.size.width, 500)];
+    _backgroundView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.1f];
     _backgroundView.alpha = 0.0f;
     [self.window insertSubview:_backgroundView belowSubview:_presentedNavigationController.view];
     

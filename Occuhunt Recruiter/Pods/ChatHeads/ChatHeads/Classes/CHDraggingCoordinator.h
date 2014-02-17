@@ -29,6 +29,7 @@ typedef void(^CHDraggingCoordinatorActionBlock)(CHDraggingCoordinator*, CHDragga
 
 - (instancetype)initWithWindow:(UIWindow *)window draggableViewBounds:(CGRect)bounds;
 - (instancetype)initWithWindow:(UIWindow *)window draggableViewBounds:(CGRect)bounds closeView:(UIView *)closeView;
+- (void)dismissPublic;
 
 @end
 

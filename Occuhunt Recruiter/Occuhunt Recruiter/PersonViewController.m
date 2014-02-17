@@ -12,6 +12,7 @@
 #import <ChatHeads/CHDraggableView.h>
 #import <ChatHeads/CHDraggableView+Avatar.h>
 #import <ChatHeads/CHAvatarView.h>
+#import "NotesViewController.h"
 
 @interface PersonViewController ()
 
@@ -85,7 +86,7 @@
     [thisServer getUser:self.userID];
     
     
-    CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"OccuhuntLogo.png"]];
+    CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"Favicon4.png"]];
     draggableView.tag = 1;
     UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
 
@@ -94,7 +95,7 @@
     _draggingCoordinator.snappingEdge = CHSnappingEdgeBoth;
     draggableView.delegate = _draggingCoordinator;
     
-//    [self.view addSubview:draggableView];
+    [self.view addSubview:draggableView];
 
 }
 
@@ -108,7 +109,19 @@
     if (self.delegate) {
         [self.delegate dismissViewControllerAnimated:YES completion:nil];
     }
+    if (_draggingCoordinator) {
+        [_draggingCoordinator dismissPublic];
+    }
 }
+
+#pragma mark - Chat Heads Delegate
+
+- (UIViewController *)draggingCoordinator:(CHDraggingCoordinator *)coordinator viewControllerForDraggableView:(CHDraggableView *)draggableView
+{
+    return [[NotesViewController alloc] init];
+}
+
+#pragma mark - Server IO Delegate
 
 - (void)returnData:(AFHTTPRequestOperation *)operation response:(NSDictionary *)response {
     if (operation.tag == GETUSER) {
@@ -127,8 +140,6 @@
             }
             
             self.resumeView.hidden = NO;
-            
-            NSLog(@"yeah getting user bro");
             
             int userIDInt = [[[[[response objectForKey:@"response"] objectForKey:@"users"] objectAtIndex:0] objectForKey:@"id"] intValue];
             NSString *userID = [NSString stringWithFormat:@"%i", userIDInt];

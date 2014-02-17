@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9D0F0135C64A4D8380454D42"
+               BlueprintIdentifier = "55360CDC1FDC4FF286E98E8A"
                BuildableName = "libPods-KLNoteViewController.a"
                BlueprintName = "Pods-KLNoteViewController"
                ReferencedContainer = "container:Pods.xcodeproj">
