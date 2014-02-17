@@ -30,7 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Notes";
-    daltvc = [[DALinedTextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    daltvc = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     daltvc.delegate = self;
     
     // Create a new RFToolbarButton
@@ -49,7 +49,7 @@
         [daltvc insertText:@"This student has been approved by the engineer.\n"];
     } forControlEvents:UIControlEventTouchUpInside];
     [exampleButton4 addEventHandler:^{
-        [daltvc insertText:@"This student has been referred by"];
+        [daltvc insertText:@"This student has been referred by "];
     } forControlEvents:UIControlEventTouchUpInside];
     
     // Create an RFKeyboardToolbar, adding all of your buttons, and set it as your inputAcessoryView
@@ -63,9 +63,9 @@
     
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineHeightMultiple = 34.0f;
-    paragraphStyle.maximumLineHeight = 34.0f;
-    paragraphStyle.minimumLineHeight = 34.0f;
+    paragraphStyle.lineHeightMultiple = 30.0f;
+    paragraphStyle.maximumLineHeight = 30.0f;
+    paragraphStyle.minimumLineHeight = 30.0f;
     NSDictionary *attribute = @{
                                 NSParagraphStyleAttributeName : paragraphStyle,
                                 NSFontAttributeName : [UIFont fontWithName:@"Proxima Nova" size:20.0],

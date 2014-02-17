@@ -10,7 +10,7 @@
 #import <DALinedTextView/DALinedTextView.h>
 
 @interface NotesViewController : UIViewController <UITextViewDelegate> {
-    DALinedTextView *daltvc;
+    UITextView *daltvc;
 }
 
 @end
