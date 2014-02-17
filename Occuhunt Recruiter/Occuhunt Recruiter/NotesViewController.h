@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DALinedTextView/DALinedTextView.h>
 
-@interface NotesViewController : UIViewController
+@interface NotesViewController : UIViewController <UITextViewDelegate> {
+    DALinedTextView *daltvc;
+}
 
 @end

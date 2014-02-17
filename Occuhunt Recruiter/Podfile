@@ -12,3 +12,4 @@ pod 'KLNoteViewController'
 pod 'DALinedTextView'
 pod 'SKBounceAnimation'
 pod 'ChatHeads'
+pod "RFKeyboardToolbar", "~> 1.1"

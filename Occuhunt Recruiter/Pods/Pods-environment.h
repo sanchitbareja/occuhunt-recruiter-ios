@@ -90,6 +90,12 @@
 #define COCOAPODS_VERSION_MINOR_Mixpanel 3
 #define COCOAPODS_VERSION_PATCH_Mixpanel 1
 
+// RFKeyboardToolbar
+#define COCOAPODS_POD_AVAILABLE_RFKeyboardToolbar
+#define COCOAPODS_VERSION_MAJOR_RFKeyboardToolbar 1
+#define COCOAPODS_VERSION_MINOR_RFKeyboardToolbar 1
+#define COCOAPODS_VERSION_PATCH_RFKeyboardToolbar 0
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
