@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerIO.h"
 
-@interface NotesViewController : UIViewController <UITextViewDelegate> {
+@interface NotesViewController : UIViewController <UITextViewDelegate, ServerIODelegate> {
     UITextView *daltvc;
+    ServerIO *thisServer;
 }
 
+@property (nonatomic, strong) NSString *applicationID;
 @property (nonatomic, strong) NSString *userNotes;
 
 @end

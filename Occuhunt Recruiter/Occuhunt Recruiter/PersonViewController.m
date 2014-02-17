@@ -98,7 +98,7 @@
     [self.view addSubview:draggableView];
 
     nvc = [[NotesViewController alloc] init];
-    nvc.userNotes = [self.userApplication objectForKey:@"note"];
+    NSLog(@"This guys application id is %@", nvc.applicationID);
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,6 +142,11 @@
                 self.resumeLink = resumeLink;
                 NSLog(@"Resume link is %@", self.resumeLink);
             }
+            
+            self.userApplication = response;
+            
+            nvc.userNotes = [self.userApplication objectForKey:@"note"];
+            nvc.applicationID = [self.userApplication objectForKey:@"id"];
             
             int userIDInt = [[[[response objectForKey:@"users"] objectAtIndex:0] objectForKey:@"id"] intValue];
             NSString *userID = [NSString stringWithFormat:@"%i", userIDInt];

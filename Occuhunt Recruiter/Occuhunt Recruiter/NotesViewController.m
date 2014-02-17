@@ -87,6 +87,9 @@
      selector:@selector(keyboardWillBeHidden:)
      name:UIKeyboardWillHideNotification object:nil];
     
+    thisServer = [[ServerIO alloc] init];
+    thisServer.delegate = self;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,6 +104,26 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [daltvc resignFirstResponder];
+    if (self.userNotes.length > 0) {
+        NSLog(@"Saving!");
+        [thisServer updateApplicationWithApplicationID:self.applicationID andNote:self.userNotes];
+    }
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITextView Delegate Methods
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (text.length > 0) {
+        self.userNotes = textView.text;
+    }
+    return YES;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -121,12 +144,6 @@
     [textView resignFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)keyboardWasShown:(NSNotification*)notification {
     NSDictionary* info = [notification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
@@ -140,4 +157,13 @@
     daltvc.scrollIndicatorInsets = UIEdgeInsetsZero;
 }
 
+#pragma mark - Server IO Delegate
+
+- (void)returnData:(AFHTTPRequestOperation *)operation response:(NSDictionary *)response {
+    
+}
+
+- (void)returnFailure:(AFHTTPRequestOperation *)operation error:(NSError *)error {
+    
+}
 @end

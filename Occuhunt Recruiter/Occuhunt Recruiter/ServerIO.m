@@ -93,6 +93,52 @@
     return;
 }
 
+- (void)makeJSONPut:(NSString *)string andArgs:(NSDictionary *)args andTag:(int)httpCallTag{
+    if (!self.delegate) {
+        NSLog(@"No delegate. Please check.");
+    }
+    if ([[args allKeys] count] == 0) {
+        NSLog(@"Empty dictionary");
+        return;
+    }
+    NSLog(@"Making call to %@", string);
+    
+    NSMutableString *constructString = [NSMutableString stringWithString:@"{"];
+    for (NSString *key in args) {
+        NSString *object = [args objectForKey:key];
+        // ONLY VALID FOR STRINGS PLEASE CHECK
+        [constructString appendFormat:@"\"%@\":\"%@\",", key, object];
+    }
+    constructString = [NSMutableString stringWithString:[constructString substringToIndex:constructString.length-1]];
+    [constructString appendString:@"}"];
+    NSLog(@"construct string = %@", constructString);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:string]
+                                                           cachePolicy:NSURLRequestReturnCacheDataElseLoad  timeoutInterval:10];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:[constructString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.tag = httpCallTag;
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON responseObject: %@ ",responseObject);
+        if (self.delegate) {
+            [self.delegate returnData:operation response:responseObject];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+        if (self.delegate) {
+            [self.delegate returnFailure:operation error:error];
+        }
+        
+    }];
+    [op start];
+    return;
+}
+
 - (void)makeJSONPatch:(NSString *)string andArgs:(NSArray *)args andTag:(int)httpCallTag{
     if (!self.delegate) {
         NSLog(@"No delegate. Please check.");
@@ -223,6 +269,11 @@
 - (void)getSpecificApplicationWithUserID:(NSString *)userID andCompanyID:(NSString *)companyID andEventID:(NSString *)eventID {
     NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/api/v1/applications/"];
     [self makeJSONPost:url andArgs:@{@"company_id":companyID, @"fair_id":eventID, @"user_id":userID} andTag:GETSPECIFICAPPLICATION];
+}
+
+- (void)updateApplicationWithApplicationID:(NSString *)applicationID andNote:(NSString *)note{
+    NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/api/v1/applications/%@/", applicationID];
+    [self makeJSONPut:url andArgs:@{@"note":note} andTag:UPDATEAPPLICATION];
 }
 
 

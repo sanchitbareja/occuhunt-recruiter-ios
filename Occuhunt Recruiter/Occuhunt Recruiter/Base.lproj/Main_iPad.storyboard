@@ -72,7 +72,11 @@
                                 </label>
                             </subviews>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="740-gear" id="HKU-yV-gU1"/>
+                        <barButtonItem key="rightBarButtonItem" image="740-gear" id="HKU-yV-gU1">
+                            <connections>
+                                <action selector="openSettings:" destination="Jav-BB-0X6" id="LY7-A3-XPT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventsButton" destination="eM1-Wd-4LA" id="CeX-DK-g75"/>

@@ -10,6 +10,7 @@
 		15B7EFD4DC3B4D21BA1EAEB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD462FC6FEB43D6BB0CA682 /* libPods.a */; };
 		8F11C58218B1A0B800409A34 /* EventListPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11C58118B1A0B800409A34 /* EventListPickerController.m */; };
 		8F11C58418B1B66000409A34 /* Favicon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F11C58318B1B66000409A34 /* Favicon4.png */; };
+		8F11C58718B1E47500409A34 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11C58618B1E47500409A34 /* SettingsViewController.m */; };
 		8F16469118AF337800BA7521 /* KLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16468E18AF337800BA7521 /* KLViewController.m */; };
 		8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469318AF339500BA7521 /* NavigationControllerData.plist */; };
 		8F16469C18AF3A2400BA7521 /* OccuhuntLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */; };
@@ -58,6 +59,8 @@
 		8F11C58018B1A0B800409A34 /* EventListPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListPickerController.h; sourceTree = "<group>"; };
 		8F11C58118B1A0B800409A34 /* EventListPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListPickerController.m; sourceTree = "<group>"; };
 		8F11C58318B1B66000409A34 /* Favicon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Favicon4.png; sourceTree = "<group>"; };
+		8F11C58518B1E47500409A34 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		8F11C58618B1E47500409A34 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8F16468D18AF337800BA7521 /* KLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLViewController.h; sourceTree = "<group>"; };
 		8F16468E18AF337800BA7521 /* KLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLViewController.m; sourceTree = "<group>"; };
 		8F16469318AF339500BA7521 /* NavigationControllerData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NavigationControllerData.plist; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				8F11C58318B1B66000409A34 /* Favicon4.png */,
 				8FA320F018B18DD400BF6CD4 /* NotesViewController.h */,
 				8FA320F118B18DD400BF6CD4 /* NotesViewController.m */,
+				8F11C58518B1E47500409A34 /* SettingsViewController.h */,
+				8F11C58618B1E47500409A34 /* SettingsViewController.m */,
 				8F16469318AF339500BA7521 /* NavigationControllerData.plist */,
 				8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */,
 				8F1646B518AF499C00BA7521 /* SharpLabel.h */,
@@ -382,6 +387,7 @@
 				8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */,
 				8F9C56FB18ACAF4300ECFC19 /* AppDelegate.m in Sources */,
 				8F9C56F718ACAF4300ECFC19 /* main.m in Sources */,
+				8F11C58718B1E47500409A34 /* SettingsViewController.m in Sources */,
 				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,
 				8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */,
 				8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */,

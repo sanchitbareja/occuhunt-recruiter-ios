@@ -13,6 +13,7 @@
 #import "NotesViewController.h"
 #import "FairListViewController.h"
 #import "SharpLabel.h"
+#import "SettingsViewController.h"
 
 @interface KLViewController ()
 
@@ -84,6 +85,12 @@
         [self.eventPickerPopover dismissPopoverAnimated:YES];
         self.eventPickerPopover = nil;
     }
+}
+
+- (IBAction)openSettings:(id)sender {
+    SettingsViewController *svc = [[SettingsViewController alloc] init];
+    svc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:svc animated:YES completion:nil];
 }
 
 #pragma mark - EventPickerDelegate method
