@@ -33,7 +33,7 @@
 
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 120, screenRect.size.width, screenRect.size.height-120) collectionViewLayout:layout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 130, screenRect.size.width, screenRect.size.height-130) collectionViewLayout:layout];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
     
@@ -225,6 +225,11 @@
     PersonViewController *pvc = [[PersonViewController alloc] init];
     NSDictionary *currentlySelectedUser = [[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"];
     pvc.userID = [currentlySelectedUser objectForKey:@"linkedin_uid"];
+    if (pvc.userID.length < 1) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:@"His profile is not set up right now." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     pvc.title = [NSString stringWithFormat:@"%@ %@", [currentlySelectedUser objectForKey:@"first_name"], [currentlySelectedUser objectForKey:@"last_name"]];
     pvc.delegate = (id) self;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
