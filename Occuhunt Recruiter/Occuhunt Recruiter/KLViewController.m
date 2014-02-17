@@ -296,7 +296,7 @@
         attendeeName.lineBreakMode = NSLineBreakByWordWrapping;
         attendeeName.numberOfLines = 0;
     }
-    attendeeName.text = [[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"first_name"];
+    attendeeName.text = [NSString stringWithFormat:@"%@ %@",[[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"first_name"], [[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"last_name"]];
     cell.backgroundColor = UIColorFromRGB(0xeef7f7);
     cell.layer.borderColor = [UIColorFromRGB(0xadadad) CGColor];
     cell.layer.borderWidth = 0.5f;

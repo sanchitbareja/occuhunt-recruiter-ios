@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#define MIXPANEL_TOKEN @"41940d4ed955784bec7e602d3d6b0dc3"
 
 @implementation AppDelegate
 
@@ -18,6 +19,10 @@
 //        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
 //        splitViewController.delegate = (id)navigationController.topViewController;
 //    }
+    
+    // Initialize the library with your
+    // Mixpanel project token, MIXPANEL_TOKEN
+    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {

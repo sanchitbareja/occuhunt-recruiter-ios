@@ -82,6 +82,10 @@
         [cell.contentView addSubview:phraseField];
         phraseField.textAlignment = NSTextAlignmentRight;
         phraseField.delegate = self;
+        phraseField.tag = 1;
+        phraseField.returnKeyType = UIReturnKeyNext;
+        phraseField.autocorrectionType = UITextAutocorrectionTypeNo; // no auto correction support
+        phraseField.autocapitalizationType = UITextAutocapitalizationTypeNone; // no auto capitalization support
         if (self.phrase) {
             phraseField.text = self.phrase;
             
@@ -94,6 +98,10 @@
         [cell.contentView addSubview:shortcutTextField];
         shortcutTextField.textAlignment = NSTextAlignmentRight;
         shortcutTextField.delegate = self;
+        shortcutTextField.tag = 2;
+        shortcutTextField.returnKeyType = UIReturnKeyDefault;
+        shortcutTextField.autocorrectionType = UITextAutocorrectionTypeNo; // no auto correction support
+        shortcutTextField.autocapitalizationType = UITextAutocapitalizationTypeNone; // no auto capitalization
         if (self.shortcut) {
             shortcutTextField.text = self.shortcut;
         }
@@ -113,6 +121,8 @@
         else {
             [listOfShortcuts addObject:@{@"phrase":phraseField.text, @"shortcut":shortcutTextField.text}];
             [[NSUserDefaults standardUserDefaults] setObject:listOfShortcuts forKey:@"shortcuts"];
+            Mixpanel *mixpanel = [Mixpanel sharedInstance];
+            [mixpanel track:@"Recruiter - Shortcut Added"];
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
@@ -128,7 +138,21 @@
     }
     return YES;
 }
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField.tag == 1) {
+        [shortcutTextField becomeFirstResponder];
+    }
+    else {
+        [self saveShortcut];
+    }
+    return YES;
+}
+
+
 /*
+ 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
