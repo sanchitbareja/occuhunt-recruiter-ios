@@ -107,7 +107,7 @@
         attendeeName.tag = 100;
         attendeeName.textAlignment = NSTextAlignmentCenter;
         attendeeName.backgroundColor = [UIColor clearColor];
-        attendeeName.font = [UIFont fontWithName:@"Proxima Nova" size:16];
+        attendeeName.font = [UIFont fontWithName:@"Proxima Nova" size:20];
         attendeeName.textColor = [UIColor blackColor];
         attendeeName.lineBreakMode = NSLineBreakByWordWrapping;
         attendeeName.numberOfLines = 0;

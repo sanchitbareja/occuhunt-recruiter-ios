@@ -60,6 +60,18 @@
 #define COCOAPODS_VERSION_MINOR_BButton 2
 #define COCOAPODS_VERSION_PATCH_BButton 3
 
+// CAAnimationBlocks
+#define COCOAPODS_POD_AVAILABLE_CAAnimationBlocks
+#define COCOAPODS_VERSION_MAJOR_CAAnimationBlocks 0
+#define COCOAPODS_VERSION_MINOR_CAAnimationBlocks 0
+#define COCOAPODS_VERSION_PATCH_CAAnimationBlocks 1
+
+// ChatHeads
+#define COCOAPODS_POD_AVAILABLE_ChatHeads
+#define COCOAPODS_VERSION_MAJOR_ChatHeads 1
+#define COCOAPODS_VERSION_MINOR_ChatHeads 0
+#define COCOAPODS_VERSION_PATCH_ChatHeads 0
+
 // DALinedTextView
 #define COCOAPODS_POD_AVAILABLE_DALinedTextView
 #define COCOAPODS_VERSION_MAJOR_DALinedTextView 0
@@ -95,6 +107,12 @@
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_ProgressView 0
 #define COCOAPODS_VERSION_MINOR_SDWebImage_ProgressView 3
 #define COCOAPODS_VERSION_PATCH_SDWebImage_ProgressView 0
+
+// SKBounceAnimation
+#define COCOAPODS_POD_AVAILABLE_SKBounceAnimation
+#define COCOAPODS_VERSION_MAJOR_SKBounceAnimation 1
+#define COCOAPODS_VERSION_MINOR_SKBounceAnimation 0
+#define COCOAPODS_VERSION_PATCH_SKBounceAnimation 4
 
 // SSKeychain
 #define COCOAPODS_POD_AVAILABLE_SSKeychain

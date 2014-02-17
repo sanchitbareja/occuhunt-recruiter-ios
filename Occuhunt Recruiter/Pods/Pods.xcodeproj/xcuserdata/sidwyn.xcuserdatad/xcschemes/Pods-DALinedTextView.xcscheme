@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AE183BCB9A1345B9B3D9DB87"
+               BlueprintIdentifier = "3E22D5AA21064DDFB66D0E26"
                BuildableName = "libPods-DALinedTextView.a"
                BlueprintName = "Pods-DALinedTextView"
                ReferencedContainer = "container:Pods.xcodeproj">

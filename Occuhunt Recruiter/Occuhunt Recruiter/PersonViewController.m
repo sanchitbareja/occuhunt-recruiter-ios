@@ -9,6 +9,9 @@
 #import "PersonViewController.h"
 #import <SDWebImage-ProgressView/UIImageView+ProgressView.h>
 #import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import <ChatHeads/CHDraggableView.h>
+#import <ChatHeads/CHDraggableView+Avatar.h>
+#import <ChatHeads/CHAvatarView.h>
 
 @interface PersonViewController ()
 
@@ -33,13 +36,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = @"Sidwyn Koh";
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.resumeView = [[UIView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self.resumeView];
     
-    UIBarButtonItem *fairButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Students" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *fairButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     self.navigationItem.leftBarButtonItem = fairButtonItem;
     
     UIBarButtonItem *statusButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Status: Applied" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -50,7 +52,7 @@
     tempRect.size.height -= 64;
     self.portfolioScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     self.portfolioImageView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    [self.portfolioImageView setImage:[UIImage imageNamed:@"OccuhuntLogo.png"]];
+//    [self.portfolioImageView setImage:[UIImage imageNamed:@"OccuhuntLogo.png"]];
     [self.portfolioImageView setContentMode:UIViewContentModeScaleAspectFill];
     [self.portfolioScrollView addSubview:self.portfolioImageView];
     [self.portfolioScrollView bringSubviewToFront:self.portfolioImageView];
@@ -80,7 +82,20 @@
     thisServer = [[ServerIO alloc] init];
     thisServer.delegate = (id) self;
     
-    [thisServer getUser:@"ZrgFJyD55e"];
+    [thisServer getUser:self.userID];
+    
+    
+    CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"OccuhuntLogo.png"]];
+    draggableView.tag = 1;
+    UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
+
+    _draggingCoordinator = [[CHDraggingCoordinator alloc] initWithWindow:keyWindow draggableViewBounds:draggableView.bounds];
+    _draggingCoordinator.delegate = self;
+    _draggingCoordinator.snappingEdge = CHSnappingEdgeBoth;
+    draggableView.delegate = _draggingCoordinator;
+    
+//    [self.view addSubview:draggableView];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +104,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)close {
+    if (self.delegate) {
+        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 
 - (void)returnData:(AFHTTPRequestOperation *)operation response:(NSDictionary *)response {
     if (operation.tag == GETUSER) {

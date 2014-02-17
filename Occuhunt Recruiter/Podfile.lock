@@ -19,6 +19,10 @@ PODS:
     - AFNetworking/NSURLConnection
   - AsyncImageView (1.5.1)
   - BButton (3.2.3)
+  - CAAnimationBlocks (0.0.1)
+  - ChatHeads (1.0):
+    - CAAnimationBlocks
+    - SKBounceAnimation
   - DALinedTextView (0.0.1)
   - KLNoteViewController (1.0)
   - Mixpanel (2.3.1)
@@ -27,6 +31,7 @@ PODS:
   - SDWebImage-ProgressView (0.3.0):
     - SDWebImage (~> 3.0)
   - SDWebImage/Core (3.5.2)
+  - SKBounceAnimation (1.0.04)
   - SSKeychain (1.2.1)
   - UIAlertView+Blocks (0.8)
   - VENVersionTracker (0.1.0)
@@ -35,6 +40,7 @@ DEPENDENCIES:
   - AFNetworking
   - AsyncImageView
   - BButton
+  - ChatHeads
   - DALinedTextView
   - KLNoteViewController
   - Mixpanel
@@ -48,11 +54,14 @@ SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
   AsyncImageView: 686febb2b2a923353ede67c529d257498059852d
   BButton: b405745cd7ccc9444c696b8690fb79541623766a
+  CAAnimationBlocks: b70f877c5b92734abef270152187d3287d84e8f8
+  ChatHeads: 8220d1108b9f7a0b1a7371e063071a264a6662ef
   DALinedTextView: a965e7097fed14ef4b5a155d0ec21f300b0d0658
   KLNoteViewController: 74c80408021ebd482e2af8d162b14e23041fb06d
   Mixpanel: 8d189c58bcaac429de9cb4f18a54621df99b7e38
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
   SDWebImage-ProgressView: 0984b5b885886358dff24964912d3313e104ad4f
+  SKBounceAnimation: 1d53d07c3496c1f61015e9d93bbaefda8391dc0d
   SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
   UIAlertView+Blocks: 39a1aee8ea75c4f9f877ff0b3734d84bf2009d1f
   VENVersionTracker: 678c673a653280c1cf5a260d0f6fecd8d523c715

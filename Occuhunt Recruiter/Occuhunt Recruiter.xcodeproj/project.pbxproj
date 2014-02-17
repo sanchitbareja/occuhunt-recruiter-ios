@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		15B7EFD4DC3B4D21BA1EAEB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD462FC6FEB43D6BB0CA682 /* libPods.a */; };
+		8F11C58218B1A0B800409A34 /* EventListPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11C58118B1A0B800409A34 /* EventListPickerController.m */; };
 		8F16469118AF337800BA7521 /* KLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16468E18AF337800BA7521 /* KLViewController.m */; };
-		8F16469218AF337800BA7521 /* KLCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16469018AF337800BA7521 /* KLCustomViewController.m */; };
 		8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469318AF339500BA7521 /* NavigationControllerData.plist */; };
 		8F16469A18AF38CB00BA7521 /* FairListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16469918AF38CB00BA7521 /* FairListViewController.m */; };
 		8F16469C18AF3A2400BA7521 /* OccuhuntLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */; };
@@ -55,10 +55,10 @@
 
 /* Begin PBXFileReference section */
 		64978D7307DD4B71A52DFBCC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8F11C58018B1A0B800409A34 /* EventListPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListPickerController.h; sourceTree = "<group>"; };
+		8F11C58118B1A0B800409A34 /* EventListPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListPickerController.m; sourceTree = "<group>"; };
 		8F16468D18AF337800BA7521 /* KLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLViewController.h; sourceTree = "<group>"; };
 		8F16468E18AF337800BA7521 /* KLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLViewController.m; sourceTree = "<group>"; };
-		8F16468F18AF337800BA7521 /* KLCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCustomViewController.h; sourceTree = "<group>"; };
-		8F16469018AF337800BA7521 /* KLCustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCustomViewController.m; sourceTree = "<group>"; };
 		8F16469318AF339500BA7521 /* NavigationControllerData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NavigationControllerData.plist; sourceTree = "<group>"; };
 		8F16469818AF38CB00BA7521 /* FairListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FairListViewController.h; sourceTree = "<group>"; };
 		8F16469918AF38CB00BA7521 /* FairListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FairListViewController.m; sourceTree = "<group>"; };
@@ -187,14 +187,14 @@
 				8F9C56FF18ACAF4300ECFC19 /* Main_iPad.storyboard */,
 				8F16468D18AF337800BA7521 /* KLViewController.h */,
 				8F16468E18AF337800BA7521 /* KLViewController.m */,
+				8F11C58018B1A0B800409A34 /* EventListPickerController.h */,
+				8F11C58118B1A0B800409A34 /* EventListPickerController.m */,
 				8F16469818AF38CB00BA7521 /* FairListViewController.h */,
 				8F16469918AF38CB00BA7521 /* FairListViewController.m */,
 				8F1646B818AF535600BA7521 /* PersonViewController.h */,
 				8F1646B918AF535600BA7521 /* PersonViewController.m */,
 				8FA320F018B18DD400BF6CD4 /* NotesViewController.h */,
 				8FA320F118B18DD400BF6CD4 /* NotesViewController.m */,
-				8F16468F18AF337800BA7521 /* KLCustomViewController.h */,
-				8F16469018AF337800BA7521 /* KLCustomViewController.m */,
 				8F16469318AF339500BA7521 /* NavigationControllerData.plist */,
 				8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */,
 				8F1646B518AF499C00BA7521 /* SharpLabel.h */,
@@ -382,12 +382,12 @@
 			files = (
 				8F1646B418AF471B00BA7521 /* ServerIO.m in Sources */,
 				8F9C56FB18ACAF4300ECFC19 /* AppDelegate.m in Sources */,
-				8F16469218AF337800BA7521 /* KLCustomViewController.m in Sources */,
 				8F9C56F718ACAF4300ECFC19 /* main.m in Sources */,
 				8F16469A18AF38CB00BA7521 /* FairListViewController.m in Sources */,
 				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,
 				8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */,
 				8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */,
+				8F11C58218B1A0B800409A34 /* EventListPickerController.m in Sources */,
 				8FA320F218B18DD400BF6CD4 /* NotesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

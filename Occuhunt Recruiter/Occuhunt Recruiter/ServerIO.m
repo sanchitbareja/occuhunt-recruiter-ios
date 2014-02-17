@@ -225,6 +225,10 @@
     [self makeJSONCall:url andTag:GETATTENDEES];
 }
 
-
+- (void)getAttendeesWithStatus:(NSString *)eventID andCompanyID:(NSString *)companyID {
+    NSLog(@"GET ATTENDEES");
+    NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/api/v1/applications/?unique_students=true&fair_id=%@&company_id=%@", eventID, companyID];
+    [self makeJSONCall:url andTag:GETATTENDEESWITHSTATUS];
+}
 
 @end
