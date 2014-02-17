@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "PPPinPadViewController.h"
+#import "KLViewController.h"
 
 @interface SettingsViewController : UITableViewController
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) KLViewController *delegate;
 
 @end

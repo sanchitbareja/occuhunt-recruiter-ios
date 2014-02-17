@@ -10,6 +10,7 @@
 #import "ServerIO.h"
 #import <ChatHeads/CHDraggingCoordinator.h>
 #import "NotesViewController.h"
+#import "KLViewController.h"
 
 @interface PersonViewController : UIViewController <UIScrollViewDelegate, ServerIODelegate, UINavigationBarDelegate, UIBarPositioningDelegate, CHDraggingCoordinatorDelegate> {
     ServerIO *thisServer;

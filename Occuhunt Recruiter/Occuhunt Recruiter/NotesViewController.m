@@ -30,7 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Notes";
-    daltvc = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
+    daltvc = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 222)];
     daltvc.delegate = self;
     
     NSArray *listOfShortcuts = [[NSUserDefaults standardUserDefaults] objectForKey:@"shortcuts"];
@@ -55,13 +55,12 @@
     NSDictionary *attribute = @{
                                 NSParagraphStyleAttributeName : paragraphStyle,
                                 NSFontAttributeName : [UIFont fontWithName:@"Proxima Nova" size:20.0],
-                                NSForegroundColorAttributeName : [UIColor blackColor]
+                                NSForegroundColorAttributeName : UIColorFromRGB(0x348891)
                                 };
     daltvc.attributedText = [[NSAttributedString alloc] initWithString:@" " attributes:attribute];
     
     
     daltvc.text = @"Write something about this student.";
-    daltvc.textColor = [UIColor lightGrayColor]; //optional
     
 //    [[NSNotificationCenter defaultCenter]
 //     addObserver:self
@@ -92,6 +91,8 @@
     [daltvc resignFirstResponder];
     if (daltvc.text.length > 0) {
         NSLog(@"Saving!");
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"Recruiter - Saved Notes"];
         self.userNotes = daltvc.text;
         [thisServer updateApplicationWithApplicationID:self.applicationID andNote:daltvc.text];
     }

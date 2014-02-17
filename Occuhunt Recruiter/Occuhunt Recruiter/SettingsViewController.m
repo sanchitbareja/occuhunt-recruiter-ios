@@ -156,18 +156,15 @@
     }
     else if (indexPath.section == 1) {
         NSString *recipients = @"mailto:occuhunt@gmail.com&subject=Occuhunt iOS Recruiter App Feedback";
-        
-        
         NSString *email = [NSString stringWithFormat:@"%@", recipients];
-        
         email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
     }
     else if (indexPath.section == 2) {
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"company_id"];
         if (self.delegate) {
             [self.delegate dismissViewControllerAnimated:YES completion:nil];
+            [self.delegate performSelector:@selector(forceCheck) withObject:nil afterDelay:1];
         }
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

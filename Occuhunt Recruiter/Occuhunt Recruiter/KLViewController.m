@@ -94,6 +94,23 @@
 //    }
 }
 
+- (void)forceCheck {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"] length] < 1) {
+        LoginViewController *lvc = [[LoginViewController alloc] init];
+        lvc.delegate = self;
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:lvc];
+        nc.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:nc animated:YES completion:nil];
+    }
+}
+
+- (void)forceReload {
+    NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
+    eventsButton.title = [self.currentlySelectedEvent objectForKey:@"name"];
+//    [thisServer getAttendees:[fair objectForKey:@"id"]];
+    [thisServer getAttendeesWithStatus:[self.currentlySelectedEvent objectForKey:@"id"] andCompanyID:companyID];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -212,6 +229,7 @@
     else if (operation.tag == GETATTENDEESWITHSTATUS) {
         if ([[response objectForKey:@"response"] objectForKey:@"applications"]) {
             self.allFourLists = [[response objectForKey:@"response"] objectForKey:@"applications"];
+            NSLog(@"My segmented index is %i", self.statusSegmentedControl.selectedSegmentIndex);
             [self.appliedList removeAllObjects];
             [self.interactedWithList removeAllObjects];
             [self.rejectedList removeAllObjects];
@@ -235,6 +253,8 @@
                         break;
                 }
             }
+            [self segmentedIndexChanged:self.statusSegmentedControl];
+            [self.collectionView reloadData];
         }
     }
 }
@@ -299,8 +319,9 @@
     pvc.title = [NSString stringWithFormat:@"%@ %@", [currentlySelectedUser objectForKey:@"first_name"], [currentlySelectedUser objectForKey:@"last_name"]];
     pvc.delegate = (id) self;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
-    
     [self presentViewController:nc animated:YES completion:nil];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Recruiter - Selected Student"];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {

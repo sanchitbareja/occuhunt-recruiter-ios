@@ -92,6 +92,8 @@
 //    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_delegate != nil) {
         [_delegate selectedEvent:[self.eventNames objectAtIndex:indexPath.row]];
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        [mixpanel track:@"Recruiter - Selected Fair"];
     }
 }
 

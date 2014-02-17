@@ -369,6 +369,9 @@
 - (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password {
     NSString *url = [NSString stringWithFormat:@"http://occuhunt.com/recruiter/login/third_party/"];
     [self makeJSONPostLogin:url andArgs:@{@"username":username, @"password":password} andTag:LOGINRECRUITER];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Recruiter - Logged In"];
 }
 
 @end

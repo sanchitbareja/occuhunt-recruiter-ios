@@ -114,6 +114,10 @@
 
 - (void)close {
     if (self.delegate) {
+        KLViewController *delegate = self.delegate;
+        if ([delegate respondsToSelector:@selector(forceReload)]) {
+            [delegate performSelector:@selector(forceReload) withObject:nil afterDelay:0.2];
+        }
         [self.delegate dismissViewControllerAnimated:YES completion:nil];
     }
     if (_draggingCoordinator) {
@@ -125,8 +129,13 @@
     //3
     NSString *applicationID = [self.userApplication objectForKey:@"id"];
     [thisServer updateApplicationWithApplicationID:applicationID andStatus:@"3"];
-    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Recruiter - Rejected Applicant"];
     if (self.delegate) {
+        KLViewController *delegate = self.delegate;
+        if ([delegate respondsToSelector:@selector(forceReload)]) {
+            [delegate performSelector:@selector(forceReload) withObject:nil afterDelay:0.2];
+        }
         [self.delegate dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -135,8 +144,13 @@
     //4
     NSString *applicationID = [self.userApplication objectForKey:@"id"];
     [thisServer updateApplicationWithApplicationID:applicationID andStatus:@"4"];
-    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Recruiter - Interviewed Applicant"];
     if (self.delegate) {
+        KLViewController *delegate = self.delegate;
+        if ([delegate respondsToSelector:@selector(forceReload)]) {
+            [delegate performSelector:@selector(forceReload) withObject:nil afterDelay:0.2];
+        }
         [self.delegate dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -178,9 +192,6 @@
             self.portfolioImageView.contentMode = UIViewContentModeTopLeft;
             NSLog(@"resume link %@", resumeLink);
             
-            Mixpanel *mixpanel = [Mixpanel sharedInstance];
-#warning To turn on mixpanel later
-//            [mixpanel track:@"Downloaded Resume"];
             
             __weak PersonViewController *weakSelf = self;
             

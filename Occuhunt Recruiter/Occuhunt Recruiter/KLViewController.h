@@ -13,9 +13,10 @@
 @interface KLViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate> {
     ServerIO *thisServer;
     IBOutlet UIBarButtonItem *eventsButton;
-    IBOutlet UISegmentedControl *statusSegmentedControl;
     IBOutlet UILabel *eventName;
 }
+
+@property (nonatomic, strong) IBOutlet UISegmentedControl *statusSegmentedControl;
 
 @property (nonatomic, strong) IBOutlet UILabel *occuhuntRecruiterLabel;
 @property (nonatomic, strong) NSArray* viewControllerData;
@@ -38,5 +39,7 @@
 @property (nonatomic, strong) UIPopoverController *eventPickerPopover;
 
 - (IBAction)chooseEvents:(id)sender;
+- (void)forceCheck;
+- (void)forceReload;
 
 @end
