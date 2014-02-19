@@ -92,7 +92,7 @@
             return listOfShortcuts.count+1;
             break;
         case 1:
-            return 1;
+            return 2;
             break;
         case 2:
             return 1;
@@ -126,7 +126,15 @@
             cell.tag = 111;
             break;
         case 1:
-            cell.textLabel.text =  @"Send Feedback";
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text =  @"Send Feedback";
+                    break;
+                case 1:
+                    cell.textLabel.text =  @"Call Us";
+                default:
+                    break;
+            }
             break;
         case 2:
             cell.textLabel.text = @"Log Out";
@@ -155,10 +163,16 @@
         [self.navigationController pushViewController:sdvc animated:YES];
     }
     else if (indexPath.section == 1) {
-        NSString *recipients = @"mailto:occuhunt@gmail.com&subject=Occuhunt iOS Recruiter App Feedback";
-        NSString *email = [NSString stringWithFormat:@"%@", recipients];
-        email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        if (indexPath.row == 0) {
+            NSString *recipients = @"mailto:occuhunt@gmail.com&subject=Occuhunt iOS Recruiter App Feedback";
+            NSString *email = [NSString stringWithFormat:@"%@", recipients];
+            email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+        }
+        else if (indexPath.row == 1) {
+            UIAlertView *callAlert = [[UIAlertView alloc] initWithTitle:@"Need help?" message:@"Call us at +1  (510) 612-7328 or +1 (510) 931-3820 for support." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [callAlert show];
+        }
     }
     else if (indexPath.section == 2) {
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"company_id"];

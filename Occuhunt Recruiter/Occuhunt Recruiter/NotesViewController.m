@@ -89,13 +89,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [daltvc resignFirstResponder];
-    if (daltvc.text.length > 0) {
-        NSLog(@"Saving!");
-        Mixpanel *mixpanel = [Mixpanel sharedInstance];
-        [mixpanel track:@"Recruiter - Saved Notes"];
-        self.userNotes = daltvc.text;
-        [thisServer updateApplicationWithApplicationID:self.applicationID andNote:daltvc.text];
-    }
+    NSLog(@"Saving!");
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Recruiter - Saved Notes"];
+    self.userNotes = daltvc.text;
+    [thisServer updateApplicationWithApplicationID:self.applicationID andNote:daltvc.text];
 }
 
 

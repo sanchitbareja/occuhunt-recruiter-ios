@@ -32,8 +32,8 @@
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         NSDictionary *shortcut1 = @{@"phrase":@"Passionate", @"shortcut":@"This student is passionate about "};
-        NSDictionary *shortcut2 = @{@"phrase":@"Used Product", @"shortcut":@"This student has been approved by the engineer.\n"};
-        NSDictionary *shortcut3 = @{@"phrase":@"Eng. Approval", @"shortcut":@"This student has used our product before.\n"};
+        NSDictionary *shortcut2 = @{@"phrase":@"Used Product", @"shortcut":@"This student has used our product before."};
+        NSDictionary *shortcut3 = @{@"phrase":@"Eng. Approval", @"shortcut":@"This student has been approved by the engineer."};
         NSDictionary *shortcut4 = @{@"phrase":@"Referral", @"shortcut":@"This student has been referred by "};
         [[NSUserDefaults standardUserDefaults] setObject:@[shortcut1, shortcut2, shortcut3, shortcut4]  forKey:@"shortcuts"];
         [[NSUserDefaults standardUserDefaults] synchronize];
