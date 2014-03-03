@@ -13,7 +13,7 @@
 		8F11C58718B1E47500409A34 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11C58618B1E47500409A34 /* SettingsViewController.m */; };
 		8F11C58918B1E72D00409A34 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F11C58818B1E72D00409A34 /* MessageUI.framework */; };
 		8F11C58C18B1E9D600409A34 /* ShortcutsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F11C58B18B1E9D600409A34 /* ShortcutsDetailViewController.m */; };
-		8F16469118AF337800BA7521 /* KLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16468E18AF337800BA7521 /* KLViewController.m */; };
+		8F16469118AF337800BA7521 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F16468E18AF337800BA7521 /* MainViewController.m */; };
 		8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469318AF339500BA7521 /* NavigationControllerData.plist */; };
 		8F16469C18AF3A2400BA7521 /* OccuhuntLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */; };
 		8F1646A718AF45C700BA7521 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F16469D18AF45C700BA7521 /* ProximaNova-Black.otf */; };
@@ -71,8 +71,8 @@
 		8F11C58818B1E72D00409A34 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8F11C58A18B1E9D600409A34 /* ShortcutsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortcutsDetailViewController.h; sourceTree = "<group>"; };
 		8F11C58B18B1E9D600409A34 /* ShortcutsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutsDetailViewController.m; sourceTree = "<group>"; };
-		8F16468D18AF337800BA7521 /* KLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLViewController.h; sourceTree = "<group>"; };
-		8F16468E18AF337800BA7521 /* KLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLViewController.m; sourceTree = "<group>"; };
+		8F16468D18AF337800BA7521 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8F16468E18AF337800BA7521 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8F16469318AF339500BA7521 /* NavigationControllerData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NavigationControllerData.plist; sourceTree = "<group>"; };
 		8F16469B18AF3A2400BA7521 /* OccuhuntLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OccuhuntLogo.png; sourceTree = "<group>"; };
 		8F16469D18AF45C700BA7521 /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
@@ -222,8 +222,8 @@
 				8F1646B318AF471B00BA7521 /* ServerIO.m */,
 				8F9C56FC18ACAF4300ECFC19 /* Main_iPhone.storyboard */,
 				8F9C56FF18ACAF4300ECFC19 /* Main_iPad.storyboard */,
-				8F16468D18AF337800BA7521 /* KLViewController.h */,
-				8F16468E18AF337800BA7521 /* KLViewController.m */,
+				8F16468D18AF337800BA7521 /* MainViewController.h */,
+				8F16468E18AF337800BA7521 /* MainViewController.m */,
 				8F11C58018B1A0B800409A34 /* EventListPickerController.h */,
 				8F11C58118B1A0B800409A34 /* EventListPickerController.m */,
 				8F1646B818AF535600BA7521 /* PersonViewController.h */,
@@ -435,7 +435,7 @@
 				8F608D7018B1FBDC008F45EA /* LoginViewController.m in Sources */,
 				8F9C56F718ACAF4300ECFC19 /* main.m in Sources */,
 				8F11C58718B1E47500409A34 /* SettingsViewController.m in Sources */,
-				8F16469118AF337800BA7521 /* KLViewController.m in Sources */,
+				8F16469118AF337800BA7521 /* MainViewController.m in Sources */,
 				8F1646B718AF499C00BA7521 /* SharpLabel.m in Sources */,
 				8F1646BA18AF535600BA7521 /* PersonViewController.m in Sources */,
 				8F11C58C18B1E9D600409A34 /* ShortcutsDetailViewController.m in Sources */,
@@ -579,7 +579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sidwyn Koh (FZZX7AJEE8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sidwyn Koh (4G4RRN54K8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Occuhunt Recruiter/Occuhunt Recruiter-Prefix.pch";
 				INFOPLIST_FILE = "Occuhunt Recruiter/Occuhunt Recruiter-Info.plist";
@@ -597,7 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sidwyn Koh (FZZX7AJEE8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sidwyn Koh (4G4RRN54K8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Occuhunt Recruiter/Occuhunt Recruiter-Prefix.pch";
 				INFOPLIST_FILE = "Occuhunt Recruiter/Occuhunt Recruiter-Info.plist";

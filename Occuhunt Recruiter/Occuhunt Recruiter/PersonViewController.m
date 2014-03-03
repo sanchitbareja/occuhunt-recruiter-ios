@@ -114,7 +114,7 @@
 
 - (void)close {
     if (self.delegate) {
-        KLViewController *delegate = self.delegate;
+        MainViewController *delegate = self.delegate;
         if ([delegate respondsToSelector:@selector(forceReload)]) {
             [delegate performSelector:@selector(forceReload) withObject:nil afterDelay:0.2];
         }
@@ -132,7 +132,7 @@
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Recruiter - Rejected Applicant"];
     if (self.delegate) {
-        KLViewController *delegate = self.delegate;
+        MainViewController *delegate = self.delegate;
         if ([delegate respondsToSelector:@selector(forceReload)]) {
             [delegate performSelector:@selector(forceReload) withObject:nil afterDelay:0.2];
         }
@@ -147,7 +147,7 @@
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     [mixpanel track:@"Recruiter - Interviewed Applicant"];
     if (self.delegate) {
-        KLViewController *delegate = self.delegate;
+        MainViewController *delegate = self.delegate;
         if ([delegate respondsToSelector:@selector(forceReload)]) {
             [delegate performSelector:@selector(forceReload) withObject:nil afterDelay:0.2];
         }

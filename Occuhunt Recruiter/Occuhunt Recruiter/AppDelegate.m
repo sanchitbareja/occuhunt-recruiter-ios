@@ -31,11 +31,19 @@
     else
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-        NSDictionary *shortcut1 = @{@"phrase":@"Passionate", @"shortcut":@"This student is passionate about "};
-        NSDictionary *shortcut2 = @{@"phrase":@"Used Product", @"shortcut":@"This student has used our product before."};
-        NSDictionary *shortcut3 = @{@"phrase":@"Eng. Approval", @"shortcut":@"This student has been approved by the engineer."};
-        NSDictionary *shortcut4 = @{@"phrase":@"Referral", @"shortcut":@"This student has been referred by "};
-        [[NSUserDefaults standardUserDefaults] setObject:@[shortcut1, shortcut2, shortcut3, shortcut4]  forKey:@"shortcuts"];
+        NSDictionary *shortcut1 = @{@"phrase":@"Passionate", @"shortcut":@"- Passionate"};
+        NSDictionary *shortcut2 = @{@"phrase":@"Used Product", @"shortcut":@"- Used our product"};
+        NSDictionary *shortcut3 = @{@"phrase":@"Eng. Approval", @"shortcut":@"- Approved by the engineer"};
+        NSDictionary *shortcut4 = @{@"phrase":@"Referral", @"shortcut":@"- Referred by"};
+        NSDictionary *shortcut5 = @{@"phrase":@"Self-starter", @"shortcut":@"- Self-starter"};
+        NSDictionary *shortcut6 = @{@"phrase":@"Motivated", @"shortcut":@"- Motivated"};
+        NSDictionary *shortcut7 = @{@"phrase":@"Works with customers", @"shortcut":@"- Works with customers"};
+        NSDictionary *shortcut8 = @{@"phrase":@"Has vision", @"shortcut":@"- Has vision"};
+        NSDictionary *shortcut9 = @{@"phrase":@"Creative", @"shortcut":@"- Is creative"};
+        NSDictionary *shortcut10 = @{@"phrase":@"Thinks out of the box", @"shortcut":@"- Thinks out of the box"};
+        NSDictionary *shortcut11 = @{@"phrase":@"Self-taught", @"shortcut":@"- Self-taught"};
+        NSDictionary *shortcut12 = @{@"phrase":@"Well-rounded", @"shortcut":@"- Well-rounded"};
+        [[NSUserDefaults standardUserDefaults] setObject:@[shortcut1, shortcut2, shortcut3, shortcut4, shortcut5, shortcut6, shortcut7, shortcut8, shortcut9, shortcut10, shortcut11, shortcut12]  forKey:@"shortcuts"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     }

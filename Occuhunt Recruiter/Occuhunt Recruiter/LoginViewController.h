@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ServerIO.h"
-#import "KLViewController.h"
+#import "MainViewController.h"
 
 @interface LoginViewController : UITableViewController <UITextFieldDelegate, ServerIODelegate> {
     UITextField *usernameField;

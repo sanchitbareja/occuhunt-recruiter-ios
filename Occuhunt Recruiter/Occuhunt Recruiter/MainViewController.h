@@ -10,7 +10,7 @@
 #import "KLNoteViewController.h"
 #import "ServerIO.h"
 #import "EventListPickerController.h"
-@interface KLViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate> {
+@interface MainViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate> {
     ServerIO *thisServer;
     IBOutlet UIBarButtonItem *eventsButton;
     IBOutlet UILabel *eventName;

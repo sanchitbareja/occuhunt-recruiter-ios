@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Kieran Lafferty. All rights reserved.
 //
 
-#import "KLViewController.h"
+#import "MainViewController.h"
 #import "KLCustomViewController.h"
 #import "FairListViewController.h"
 #import "PersonViewController.h"
@@ -19,11 +19,11 @@
 #import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 #import "LoginViewController.h"
 
-@interface KLViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation KLViewController
+@implementation MainViewController
 
 - (void)loadView {
     [super loadView];
@@ -38,7 +38,7 @@
 
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 130, screenRect.size.width, screenRect.size.height-130) collectionViewLayout:layout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 140, screenRect.size.width, screenRect.size.height-140) collectionViewLayout:layout];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
     
@@ -85,13 +85,12 @@
                                               });
                                           }];
     
-//    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"]) {
-        LoginViewController *lvc = [[LoginViewController alloc] init];
-        lvc.delegate = self;
-        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:lvc];
-        nc.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentViewController:nc animated:YES completion:nil];
-//    }
+    LoginViewController *lvc = [[LoginViewController alloc] init];
+    lvc.delegate = self;
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:lvc];
+    nc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:nc animated:YES completion:nil];
+    
 }
 
 - (void)forceCheck {
