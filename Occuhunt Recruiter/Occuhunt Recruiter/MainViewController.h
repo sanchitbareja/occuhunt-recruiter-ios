@@ -10,10 +10,13 @@
 #import "KLNoteViewController.h"
 #import "ServerIO.h"
 #import "EventListPickerController.h"
-@interface MainViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate> {
+@interface MainViewController : KLNoteViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationBarDelegate, ServerIODelegate, EventListPickerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
     ServerIO *thisServer;
     IBOutlet UIBarButtonItem *eventsButton;
+    IBOutlet UIBarButtonItem *candidateStatusButton;
     IBOutlet UILabel *eventName;
+    
+    BOOL isSearching;
 }
 
 @property (nonatomic, strong) IBOutlet UISegmentedControl *statusSegmentedControl;
@@ -38,7 +41,24 @@
 @property (nonatomic, strong) EventListPickerController *eventLPC;
 @property (nonatomic, strong) UIPopoverController *eventPickerPopover;
 
+@property (nonatomic, strong) EventListPickerController *candidateStatusLPC;
+@property (nonatomic, strong) UIPopoverController *candidateStatusPickerPopover;
+
+//@property (nonatomic, strong) EventListPickerController *eventLPC;
+//@property (nonatomic, strong) UIPopoverController *eventPickerPopover;
+
+@property (nonatomic, strong) NSMutableArray *contentList;
+@property (nonatomic, strong) NSMutableArray *filteredContentList;
+
+// Searching
+
+@property (strong, nonatomic) IBOutlet UITableView *tblContentList;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchBarController;
+
 - (IBAction)chooseEvents:(id)sender;
+- (IBAction)chooseStatus:(id)sender;
+
 - (void)forceCheck;
 - (void)forceReload;
 

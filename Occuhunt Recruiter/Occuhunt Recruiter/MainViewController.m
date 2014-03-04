@@ -37,8 +37,9 @@
     [super viewDidLoad];
 
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
+    [layout setSectionInset:UIEdgeInsetsMake(20, 10, 20, 10)];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 140, screenRect.size.width, screenRect.size.height-140) collectionViewLayout:layout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, screenRect.size.height-64) collectionViewLayout:layout];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
     
@@ -91,6 +92,29 @@
     nc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:nc animated:YES completion:nil];
     
+    UIBarButtonItem *settingsBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"740-gear"] style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
+    
+//    self.navigationItem.rightBarButtonItems = @[searchBarButton, settingsBarButton];
+    
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 400, 44.0)];
+    _searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    _searchBar.placeholder = @"Search Candidates";
+    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 400, 44.0)];
+    searchBarView.autoresizingMask = 0;
+    _searchBar.delegate = self;
+    [searchBarView addSubview:_searchBar];
+    self.navigationItem.titleView = searchBarView;
+    
+    self.contentList = [[NSMutableArray alloc] init];
+    self.filteredContentList = [[NSMutableArray alloc] init];
+    
+    _tblContentList = [[UITableView alloc] initWithFrame:CGRectMake(screenRect.size.width/2-140, 64, 280, 400) style:UITableViewStylePlain];
+    
+    _tblContentList.delegate = self;
+    _tblContentList.dataSource = self;
+    [self.view addSubview:_tblContentList];
+    self.tblContentList.hidden = YES;
 }
 
 - (void)forceCheck {
@@ -137,7 +161,8 @@
 {
     if (self.eventLPC == nil) {
         //Create the ColorPickerViewController.
-        self.eventLPC = [[EventListPickerController alloc] initWithStyle:UITableViewStylePlain andEvents:self.listOfEvents];
+        self.eventLPC = [[EventListPickerController alloc] initWithStyle:UITableViewStylePlain andEvents:self.listOfEvents andTag:0];
+        self.eventLPC.tag = 0;
         //Set this VC as the delegate.
         self.eventLPC.delegate = self;
     }
@@ -153,6 +178,27 @@
     }
 }
 
+- (IBAction)chooseStatus:(id)sender
+{
+    if (self.candidateStatusLPC == nil) {
+        //Create the ColorPickerViewController.
+        NSArray *statusArray = @[@"Attending", @"Applied", @"Interacted With", @"Rejected", @"Interviewing"];
+        self.candidateStatusLPC = [[EventListPickerController alloc] initWithStyle:UITableViewStylePlain andEvents:statusArray andTag:1];
+        //Set this VC as the delegate.
+        self.candidateStatusLPC.delegate = self;
+    }
+    
+    if (self.candidateStatusPickerPopover == nil) {
+        //The color picker popover is not showing. Show it.
+        self.candidateStatusPickerPopover = [[UIPopoverController alloc] initWithContentViewController:self.candidateStatusLPC];
+        [self.candidateStatusPickerPopover presentPopoverFromBarButtonItem:(UIBarButtonItem *) sender  permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    } else {
+        //The color picker popover is showing. Hide it.
+        [self.candidateStatusPickerPopover dismissPopoverAnimated:YES];
+        self.candidateStatusPickerPopover = nil;
+    }
+}
+
 - (IBAction)openSettings:(id)sender {
     SettingsViewController *svc = [[SettingsViewController alloc] init];
     svc.delegate = self;
@@ -162,21 +208,74 @@
 }
 
 #pragma mark - EventPickerDelegate method
--(void)selectedEvent:(NSDictionary *)selectedEvent
+
+- (void)selectedEvent:(id)selectedEvent andLPC:(EventListPickerController *)lpc
 {
     //Dismiss the popover if it's showing.
-    if (self.eventPickerPopover) {
-        [self.eventPickerPopover dismissPopoverAnimated:YES];
-        self.eventPickerPopover = nil;
+    if (lpc.tag == 0) {
+        if (self.eventPickerPopover) {
+            [self.eventPickerPopover dismissPopoverAnimated:YES];
+            self.eventPickerPopover = nil;
+        }
+        NSDictionary *anotherEvent = (NSDictionary *)selectedEvent;
+        [self selectFair:anotherEvent];
     }
-    [self selectFair:selectedEvent];
+    else if (lpc.tag == 1) {
+        if (self.candidateStatusPickerPopover) {
+            [self.candidateStatusPickerPopover dismissPopoverAnimated:YES];
+            self.candidateStatusPickerPopover = nil;
+        }
+        switch ([selectedEvent intValue]) {
+            case 0:
+                self.selectedFromSegmentedIndexList = self.listOfAttendees;
+                [candidateStatusButton setTitle:@"Attending"];
+                break;
+            case 1:
+                self.selectedFromSegmentedIndexList = self.appliedList;
+                [candidateStatusButton setTitle:@"Applied"];
+                break;
+            case 2:
+                self.selectedFromSegmentedIndexList = self.interactedWithList;
+                [candidateStatusButton setTitle:@"Interacted With"];
+                break;
+            case 3:
+                self.selectedFromSegmentedIndexList = self.rejectedList;
+                [candidateStatusButton setTitle:@"Rejected"];
+                break;
+            case 4:
+                self.selectedFromSegmentedIndexList = self.interviewingList;
+                [candidateStatusButton setTitle:@"Interviewing"];
+                break;
+            default:
+                break;
+        }
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)selectFair:(NSDictionary *)fair{
     NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
     
     self.currentlySelectedEvent = fair;
-    eventsButton.title = [self.currentlySelectedEvent objectForKey:@"name"];
+    // Truncate button
+    NSString *currentTitle = [self.currentlySelectedEvent objectForKey:@"name"];
+    
+    // define the range you're interested in
+    BOOL toShorten = NO;
+    if (currentTitle.length > 17) {
+        toShorten = YES;
+    }
+    NSRange stringRange = {0, MIN([currentTitle length], 17)};
+    // adjust the range to include dependent chars
+    stringRange = [currentTitle rangeOfComposedCharacterSequencesForRange:stringRange];
+    
+    // Now you can create the short string
+    NSMutableString *shortString = [[currentTitle substringWithRange:stringRange] mutableCopy];
+    if (toShorten) {
+        [shortString appendString:@"..."];
+    }
+    
+    eventsButton.title = shortString;
     [thisServer getAttendees:[fair objectForKey:@"id"]];
     [thisServer getAttendeesWithStatus:[fair objectForKey:@"id"] andCompanyID:companyID];
 }
@@ -233,6 +332,8 @@
             [self.interactedWithList removeAllObjects];
             [self.rejectedList removeAllObjects];
             [self.interviewingList removeAllObjects];
+            [self.contentList removeAllObjects];
+            self.contentList = [self.allFourLists mutableCopy];
             for (NSDictionary *eachApplicant in self.allFourLists) {
                 switch ([[eachApplicant objectForKey:@"status"] integerValue]) {
                     case 1:
@@ -286,7 +387,7 @@
         attendeeName.text = @"";
     }
     else {
-        attendeeName = [[UILabel alloc] initWithFrame:CGRectMake(2, 60, 138, 20)];
+        attendeeName = [[UILabel alloc] initWithFrame:CGRectMake(2, 30, 138, 80)];
         attendeeName.tag = 100;
         attendeeName.textAlignment = NSTextAlignmentCenter;
         attendeeName.backgroundColor = [UIColor clearColor];
@@ -295,10 +396,23 @@
         attendeeName.lineBreakMode = NSLineBreakByWordWrapping;
         attendeeName.numberOfLines = 0;
     }
-    attendeeName.text = [NSString stringWithFormat:@"%@ %@",[[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"first_name"], [[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"last_name"]];
+    
+    
+    NSString *firstName = [[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"first_name"];
+    int firstNameLength = firstName.length;
+    NSString *lastName = [[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"last_name"];
+    
+    NSString *bothFirstAndLastName = [NSString stringWithFormat:@"%@\n\n %@", firstName, lastName];
+    
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:bothFirstAndLastName];
+    
+    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Proxima Nova" size:30.0] range:NSMakeRange(0, firstNameLength)];
+    attendeeName.attributedText = str;
+    
+//    attendeeName.text = [NSString stringWithFormat:@"%@ %@",, [[[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"] objectForKey:@"last_name"]];
     cell.backgroundColor = UIColorFromRGB(0xeef7f7);
-    cell.layer.borderColor = [UIColorFromRGB(0xadadad) CGColor];
-    cell.layer.borderWidth = 0.5f;
+//    cell.layer.borderColor = [UIColorFromRGB(0xadadad) CGColor];
+//    cell.layer.borderWidth = 0.5f;
     [cell.contentView addSubview:attendeeName];
     return cell;
 }
@@ -310,22 +424,126 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected");
-    PersonViewController *pvc = [[PersonViewController alloc] init];
     NSDictionary *currentlySelectedUser = [[self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row] objectForKey:@"user"];
-    pvc.userID = [currentlySelectedUser objectForKey:@"id"];
-    pvc.userApplication = currentlySelectedUser;
-    pvc.eventID = [self.currentlySelectedEvent objectForKey:@"id"];
-    pvc.title = [NSString stringWithFormat:@"%@ %@", [currentlySelectedUser objectForKey:@"first_name"], [currentlySelectedUser objectForKey:@"last_name"]];
-    pvc.delegate = (id) self;
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
-    [self presentViewController:nc animated:YES completion:nil];
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel track:@"Recruiter - Selected Student"];
+    [self openPersonViewController:currentlySelectedUser];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 10;
     
+}
+
+#pragma mark - Open Person View Controller
+
+- (void)openPersonViewController:(NSDictionary *)selectedUser{
+    PersonViewController *pvc = [[PersonViewController alloc] init];
+    pvc.userID = [selectedUser objectForKey:@"id"];
+    pvc.userApplication = selectedUser;
+    pvc.eventID = [self.currentlySelectedEvent objectForKey:@"id"];
+    pvc.title = [NSString stringWithFormat:@"%@ %@", [selectedUser objectForKey:@"first_name"], [selectedUser objectForKey:@"last_name"]];
+    pvc.delegate = (id) self;
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
+    [self presentViewController:nc animated:YES completion:nil];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Recruiter - Selected Student"];
+
+}
+
+#pragma mark - Searching
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    if (isSearching) {
+        return [self.filteredContentList count];
+    }
+    else {
+        return [self.contentList count];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell...
+    if (isSearching) {
+        NSDictionary *eachStudent = [self.filteredContentList objectAtIndex:indexPath.row];
+        NSString *firstName = [[eachStudent objectForKey:@"user"] objectForKey:@"first_name"];
+        NSString *lastName = [[eachStudent objectForKey:@"user"] objectForKey:@"last_name"];
+        NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        cell.textLabel.text = fullName;
+    }
+    else {
+        NSDictionary *eachStudent = [self.selectedFromSegmentedIndexList objectAtIndex:indexPath.row];
+        NSString *firstName = [[eachStudent objectForKey:@"user"] objectForKey:@"first_name"];
+        NSString *lastName = [[eachStudent objectForKey:@"user"] objectForKey:@"last_name"];
+        NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        cell.textLabel.text = fullName;
+    }
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected");
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *currentlySelectedUser = [[self.filteredContentList objectAtIndex:indexPath.row] objectForKey:@"user"];
+    [self openPersonViewController:currentlySelectedUser];
+}
+
+- (void)searchTableList {
+    NSString *searchString = _searchBar.text;
+    
+    for (NSDictionary *eachStudent in self.selectedFromSegmentedIndexList) {
+        NSString *firstName = [[eachStudent objectForKey:@"user"] objectForKey:@"first_name"];
+        NSString *lastName = [[eachStudent objectForKey:@"user"] objectForKey:@"last_name"];
+        NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        NSComparisonResult result = [fullName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+        if (result == NSOrderedSame) {
+            [self.filteredContentList addObject:eachStudent];
+        }
+    }
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text change - %d",isSearching);
+    
+    //Remove all objects first.
+    [self.filteredContentList removeAllObjects];
+    
+    if([searchText length] != 0) {
+        isSearching = YES;
+        [self searchTableList];
+        _tblContentList.hidden = NO;
+    }
+    else {
+        isSearching = NO;
+        _tblContentList.hidden = YES;
+    }
+    [self.tblContentList reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchTableList];
 }
 
 @end

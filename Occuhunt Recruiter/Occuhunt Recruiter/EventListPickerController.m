@@ -11,13 +11,13 @@
 @implementation EventListPickerController
 
 #pragma mark - Init
-- (id)initWithStyle:(UITableViewStyle)style andEvents:(NSArray *)listOfEvents
+- (id)initWithStyle:(UITableViewStyle)style andEvents:(NSArray *)listOfEvents andTag:(int) tag
 {
     if ([super initWithStyle:style] != nil) {
         
         //Initialize the array
         self.eventNames = [listOfEvents copy];
-        
+        self.tag = tag;
         //Make row selections persist.
         
         //Calculate how tall the view should be by multiplying the individual row height
@@ -28,12 +28,23 @@
         
         //Calculate how wide the view should be by finding how wide each string is expected to be
         CGFloat largestLabelWidth = 0;
-        for (NSDictionary *eachEvent in self.eventNames) {
-            //Checks size of text using the default font for UITableViewCell's textLabel.
-            NSString *colorName = [eachEvent objectForKey:@"name"];
-            CGSize labelSize = [colorName sizeWithFont:[UIFont boldSystemFontOfSize:20.0f]];
-            if (labelSize.width > largestLabelWidth) {
-                largestLabelWidth = labelSize.width;
+        NSLog(@"my integer is %i", self.tag);
+        if (self.tag == 0) {
+            for (NSDictionary *eachEvent in self.eventNames) {
+                //Checks size of text using the default font for UITableViewCell's textLabel.
+                NSString *colorName = [eachEvent objectForKey:@"name"];
+                CGSize labelSize = [colorName sizeWithFont:[UIFont boldSystemFontOfSize:20.0f]];
+                if (labelSize.width > largestLabelWidth) {
+                    largestLabelWidth = labelSize.width;
+                }
+            }
+        }
+        else if (self.tag == 1){
+            for (NSString *eachString in self.eventNames) {
+                CGSize labelSize = [eachString sizeWithFont:[UIFont boldSystemFontOfSize:22.0f]];
+                if (labelSize.width > largestLabelWidth) {
+                    largestLabelWidth = labelSize.width;
+                }
             }
         }
         
@@ -79,9 +90,14 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     // Configure the cell...
-    cell.textLabel.text = [[self.eventNames objectAtIndex:indexPath.row] objectForKey:@"name"];
+    if (self.tag == 0) {
+        cell.textLabel.text = [[self.eventNames objectAtIndex:indexPath.row] objectForKey:@"name"];
+    }
+    else if (self.tag == 1){
+        cell.textLabel.text = [self.eventNames objectAtIndex:indexPath.row];
+        cell.textLabel.textAlignment = NSTextAlignmentRight;
+    }
     
     return cell;
 }
@@ -91,9 +107,14 @@
 {
 //    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_delegate != nil) {
-        [_delegate selectedEvent:[self.eventNames objectAtIndex:indexPath.row]];
-        Mixpanel *mixpanel = [Mixpanel sharedInstance];
-        [mixpanel track:@"Recruiter - Selected Fair"];
+        if (self.tag == 0) {
+            [_delegate selectedEvent:[self.eventNames objectAtIndex:indexPath.row] andLPC:self];
+            Mixpanel *mixpanel = [Mixpanel sharedInstance];
+            [mixpanel track:@"Recruiter - Selected Fair"];
+        }
+        else if (self.tag == 1) {
+            [_delegate selectedEvent:[NSNumber numberWithInt:indexPath.row] andLPC:self];
+        }
     }
 }
 

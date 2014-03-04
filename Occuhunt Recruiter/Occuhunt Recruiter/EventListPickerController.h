@@ -10,11 +10,12 @@
 
 @protocol EventListPickerDelegate <NSObject>
 @required
-- (void)selectedEvent:(NSString *)eventID;
+- (void)selectedEvent:(id)selectedEvent andLPC:(UIViewController *)lpc;
 @end
 
 @interface EventListPickerController : UITableViewController
-- (id)initWithStyle:(UITableViewStyle)style andEvents:(NSArray *)listOfEvents;
+- (id)initWithStyle:(UITableViewStyle)style andEvents:(NSArray *)listOfEvents andTag:(int) tag;
 @property (nonatomic, strong) NSArray *eventNames;
+@property (nonatomic, assign) NSInteger tag;
 @property (nonatomic, weak) id<EventListPickerDelegate> delegate;
 @end
