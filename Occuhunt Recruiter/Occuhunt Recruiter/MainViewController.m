@@ -512,16 +512,18 @@
         isSearching = YES;
         [self searchTableList];
         _tblContentList.hidden = NO;
+        [self.tblContentList reloadData];
     }
     else {
         isSearching = NO;
         _tblContentList.hidden = YES;
     }
-    [self.tblContentList reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"Cancel clicked");
+    _tblContentList.hidden = YES;
+    [self.filteredContentList removeAllObjects];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
