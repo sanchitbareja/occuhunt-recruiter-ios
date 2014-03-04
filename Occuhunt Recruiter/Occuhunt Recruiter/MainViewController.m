@@ -48,6 +48,7 @@
     _collectionView.userInteractionEnabled = YES;
     [self.view addSubview:_collectionView];
     
+    self.collectionView.alwaysBounceVertical = YES;
     refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(forceReload)
              forControlEvents:UIControlEventValueChanged];
@@ -136,7 +137,6 @@
 - (void)forceReload {
     NSString *companyID = [[NSUserDefaults standardUserDefaults] objectForKey:@"company_id"];
     eventsButton.title = [self.currentlySelectedEvent objectForKey:@"name"];
-//    [thisServer getAttendees:[fair objectForKey:@"id"]];
     [thisServer getAttendeesWithStatus:[self.currentlySelectedEvent objectForKey:@"id"] andCompanyID:companyID];
 }
 
@@ -226,7 +226,7 @@
         NSDictionary *anotherEvent = (NSDictionary *)selectedEvent;
         [self selectFair:anotherEvent];
     }
-    else if (lpc.tag == 1) {
+    else if (lpc.tag == 1 || lpc == nil) {
         if (self.candidateStatusPickerPopover) {
             [self.candidateStatusPickerPopover dismissPopoverAnimated:YES];
             self.candidateStatusPickerPopover = nil;
@@ -286,32 +286,6 @@
     [thisServer getAttendeesWithStatus:[fair objectForKey:@"id"] andCompanyID:companyID];
 }
 
-#pragma mark - Segemented Control Method
-
-- (IBAction)segmentedIndexChanged:(id)sender {
-    int index = [(UISegmentedControl *)sender selectedSegmentIndex];
-    NSLog(@" MY SEGMENTED INDEX IS %i", index);
-    switch (index) {
-        case 0:
-            self.selectedFromSegmentedIndexList = self.listOfAttendees;
-            break;
-        case 1:
-            self.selectedFromSegmentedIndexList = self.appliedList;
-            break;
-        case 2:
-            self.selectedFromSegmentedIndexList = self.interactedWithList;
-            break;
-        case 3:
-            self.selectedFromSegmentedIndexList = self.rejectedList;
-            break;
-        case 4:
-            self.selectedFromSegmentedIndexList = self.interviewingList;
-            break;
-        default:
-            break;
-    }
-    [self.collectionView reloadData];
-}
 
 #pragma mark - ServerIO Delegate Methods
 
@@ -359,8 +333,8 @@
                         break;
                 }
             }
-            [self segmentedIndexChanged:self.statusSegmentedControl];
             [self.collectionView reloadData];
+//            [self segmentedIndexChanged:self.statusSegmentedControl];
             if (refreshControl.isRefreshing) {
                 [refreshControl endRefreshing];
             }
