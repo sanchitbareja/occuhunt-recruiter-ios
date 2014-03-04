@@ -39,7 +39,7 @@
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     [layout setSectionInset:UIEdgeInsetsMake(20, 10, 20, 10)];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, screenRect.size.height-64) collectionViewLayout:layout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, screenRect.size.width, screenRect.size.height-124) collectionViewLayout:layout];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
     

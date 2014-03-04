@@ -78,14 +78,15 @@
     if (indexPath.row == 0) {
         cell.textLabel.text = @"Phrase";
         cell.detailTextLabel.hidden = YES;
-        phraseField = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 410, 36)];
+        phraseField = [[UITextField alloc] initWithFrame:CGRectMake(110, 4, 416, 36)];
         [cell.contentView addSubview:phraseField];
-        phraseField.textAlignment = NSTextAlignmentRight;
+        phraseField.textAlignment = NSTextAlignmentLeft;
         phraseField.delegate = self;
         phraseField.tag = 1;
         phraseField.returnKeyType = UIReturnKeyNext;
         phraseField.autocorrectionType = UITextAutocorrectionTypeNo; // no auto correction support
         phraseField.autocapitalizationType = UITextAutocapitalizationTypeNone; // no auto capitalization support
+        phraseField.clearButtonMode = UITextFieldViewModeWhileEditing;
         if (self.phrase) {
             phraseField.text = self.phrase;
             
@@ -94,14 +95,15 @@
     else if (indexPath.row == 1) {
         cell.textLabel.text = @"Shortcut";
         cell.detailTextLabel.hidden = YES;
-        shortcutTextField = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 410, 36)];
+        shortcutTextField = [[UITextField alloc] initWithFrame:CGRectMake(110, 4, 416, 36)];
         [cell.contentView addSubview:shortcutTextField];
-        shortcutTextField.textAlignment = NSTextAlignmentRight;
+        shortcutTextField.textAlignment = NSTextAlignmentLeft;
         shortcutTextField.delegate = self;
         shortcutTextField.tag = 2;
         shortcutTextField.returnKeyType = UIReturnKeyDefault;
         shortcutTextField.autocorrectionType = UITextAutocorrectionTypeNo; // no auto correction support
         shortcutTextField.autocapitalizationType = UITextAutocapitalizationTypeNone; // no auto capitalization
+        shortcutTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         if (self.shortcut) {
             shortcutTextField.text = self.shortcut;
         }
