@@ -48,6 +48,11 @@
     _collectionView.userInteractionEnabled = YES;
     [self.view addSubview:_collectionView];
     
+    refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(forceReload)
+             forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:refreshControl];
+    
     self.listOfAttendees = [[NSMutableArray alloc] init];
     
     thisServer = [[ServerIO alloc] init];
@@ -115,6 +120,7 @@
     _tblContentList.dataSource = self;
     [self.view addSubview:_tblContentList];
     self.tblContentList.hidden = YES;
+    
 }
 
 - (void)forceCheck {
@@ -355,6 +361,9 @@
             }
             [self segmentedIndexChanged:self.statusSegmentedControl];
             [self.collectionView reloadData];
+            if (refreshControl.isRefreshing) {
+                [refreshControl endRefreshing];
+            }
         }
     }
 }

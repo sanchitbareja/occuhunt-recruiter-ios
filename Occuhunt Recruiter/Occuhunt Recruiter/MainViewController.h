@@ -17,6 +17,7 @@
     IBOutlet UILabel *eventName;
     
     BOOL isSearching;
+    UIRefreshControl *refreshControl;
 }
 
 @property (nonatomic, strong) IBOutlet UISegmentedControl *statusSegmentedControl;
