@@ -24,7 +24,7 @@
 }
 
 - (id)initWithButtons:(NSArray*)buttons {
-    self = [super initWithFrame:CGRectMake(0, 0, self.window.rootViewController.view.bounds.size.width, 40)];
+    self = [super initWithFrame:CGRectMake(0, 0, self.window.rootViewController.view.bounds.size.width, 60)];
     if (self) {
         _buttonsToAdd = buttons;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -41,7 +41,7 @@
 }
 
 - (UIView*)inputAccessoryView {
-    _toolbarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 40)];
+    _toolbarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 60)];
     _toolbarView.backgroundColor = [UIColor colorWithWhite:0.973 alpha:1.0];
     _toolbarView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
@@ -56,11 +56,11 @@
 }
 
 - (UIScrollView*)fakeToolbar {
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 40)];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 60)];
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.contentInset = UIEdgeInsetsMake(6.0f, 0.0f, 8.0f, 6.0f);
+    _scrollView.contentInset = UIEdgeInsetsMake(10.0f, 0.0f, 8.0f, 6.0f);
     
     NSUInteger index = 0;
     NSUInteger originX = 8;

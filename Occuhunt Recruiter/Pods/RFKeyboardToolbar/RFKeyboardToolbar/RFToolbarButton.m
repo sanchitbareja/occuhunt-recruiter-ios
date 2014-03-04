@@ -27,9 +27,9 @@
 
 - (id)init
 {
-    CGSize sizeOfText = [self.title sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:14.f]}];
+    CGSize sizeOfText = [self.title sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
     
-    self = [super initWithFrame:CGRectMake(0, 0, sizeOfText.width + 18.104, sizeOfText.height + 10.298)];
+    self = [super initWithFrame:CGRectMake(0, 4, sizeOfText.width + 38.104, 40)];
     if (self) {
         self.backgroundColor = [UIColor colorWithWhite:0.902 alpha:1.0];
         
@@ -40,7 +40,7 @@
         [self setTitle:self.title forState:UIControlStateNormal];
         [self setTitleColor:[UIColor colorWithWhite:0.500 alpha:1.0] forState:UIControlStateNormal];
         
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:18.f];
         self.titleLabel.textColor = [UIColor colorWithWhite:0.500 alpha:1.0];
     }
     return self;
