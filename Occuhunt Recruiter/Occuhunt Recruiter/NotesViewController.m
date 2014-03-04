@@ -60,7 +60,7 @@
     daltvc.attributedText = [[NSAttributedString alloc] initWithString:@" " attributes:attribute];
     
     
-    daltvc.text = @"Write something about this student.";
+    daltvc.text = @"";
     
 //    [[NSNotificationCenter defaultCenter]
 //     addObserver:self
@@ -111,24 +111,6 @@
     }
     return YES;
 }
-
-//- (void)textViewDidBeginEditing:(UITextView *)textView
-//{
-//    if ([textView.text isEqualToString:@"Write something about this student."]) {
-//        textView.text = @"";
-//        textView.textColor = [UIColor blackColor]; //optional
-//    }
-//    [textView becomeFirstResponder];
-//}
-//
-//- (void)textViewDidEndEditing:(UITextView *)textView
-//{
-//    if ([textView.text isEqualToString:@""]) {
-//        textView.text = @"Write something about this student.";
-//        textView.textColor = [UIColor lightGrayColor]; //optional
-//    }
-//    [textView resignFirstResponder];
-//}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
