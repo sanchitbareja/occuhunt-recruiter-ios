@@ -293,6 +293,15 @@
     if (operation.tag == GETATTENDEES) {
         if ([[response objectForKey:@"response"] objectForKey:@"applications"]) {
             self.listOfAttendees = [[[response objectForKey:@"response"] objectForKey:@"applications"] copy];
+            self.listOfAttendees = [[self.listOfAttendees sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                NSDictionary* left = obj1;
+                NSDictionary* right = obj2;
+                NSDictionary* left_parent_dict = [left objectForKey: @"user"];
+                NSDictionary* right_parent_dict = [right objectForKey: @"user"];
+                NSString *left_first_name = [left_parent_dict objectForKey: @"first_name"];
+                NSString* right_first_name = [right_parent_dict objectForKey: @"first_name"];
+                return [left_first_name compare:right_first_name options:NSDiacriticInsensitiveSearch|NSCaseInsensitiveSearch];
+            } ] mutableCopy];
         }
         self.selectedFromSegmentedIndexList = self.listOfAttendees;
         [self.collectionView reloadData];
@@ -308,6 +317,20 @@
         if ([[response objectForKey:@"response"] objectForKey:@"applications"]) {
             self.allFourLists = [[response objectForKey:@"response"] objectForKey:@"applications"];
             NSLog(@"My segmented index is %i", self.statusSegmentedControl.selectedSegmentIndex);
+            NSLog(@"all four lists %@", self.allFourLists);
+            // Sort array alphabetically
+            self.allFourLists = [[self.allFourLists sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                NSDictionary* left = obj1;
+                NSDictionary* right = obj2;
+                NSDictionary* left_parent_dict = [left objectForKey: @"user"];
+                NSDictionary* right_parent_dict = [right objectForKey: @"user"];
+                NSString *left_first_name = [left_parent_dict objectForKey: @"first_name"];
+                NSString* right_first_name = [right_parent_dict objectForKey: @"first_name"];
+                NSNumber* left_val = [NSNumber numberWithInt: [left_first_name intValue]];
+                NSNumber* right_val = [NSNumber numberWithInt: [right_first_name intValue]];
+                
+                return [left_val compare: right_val];        
+            } ] mutableCopy];
             [self.appliedList removeAllObjects];
             [self.interactedWithList removeAllObjects];
             [self.rejectedList removeAllObjects];
@@ -333,6 +356,7 @@
                         break;
                 }
             }
+            
             [self.collectionView reloadData];
 //            [self segmentedIndexChanged:self.statusSegmentedControl];
             if (refreshControl.isRefreshing) {
