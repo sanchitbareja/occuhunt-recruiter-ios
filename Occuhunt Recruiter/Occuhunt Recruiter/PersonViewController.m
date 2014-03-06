@@ -51,7 +51,7 @@
     UIBarButtonItem *interviewButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Interview" style:UIBarButtonItemStylePlain target:self action:@selector(interviewApplicant)];
     [interviewButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x005f69)} forState:UIControlStateNormal];
 
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:interviewButtonItem, fixedItem, rejectButtonItem, nil];
+//    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:interviewButtonItem, fixedItem, rejectButtonItem, nil];
     
     CGRect tempRect = self.view.frame;
     tempRect.origin.y += 64;
@@ -91,7 +91,7 @@
     [thisServer getSpecificApplicationWithUserID:self.userID andCompanyID:companyID andEventID:self.eventID];
     
     
-    CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"Favicon4.png"]];
+    CHDraggableView *draggableView = [CHDraggableView draggableViewWithImage:[UIImage imageNamed:@"AddNotes.jpg"]];
     draggableView.tag = 1;
     UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
 

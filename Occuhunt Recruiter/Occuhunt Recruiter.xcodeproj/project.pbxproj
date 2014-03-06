@@ -49,6 +49,8 @@
 		8F9C571A18ACAF4300ECFC19 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C571818ACAF4300ECFC19 /* InfoPlist.strings */; };
 		8F9C571C18ACAF4300ECFC19 /* Occuhunt_RecruiterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C571B18ACAF4300ECFC19 /* Occuhunt_RecruiterTests.m */; };
 		8FA320F218B18DD400BF6CD4 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA320F118B18DD400BF6CD4 /* NotesViewController.m */; };
+		8FF1BAE218C876E500A4D25C /* AddNotes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1BAE018C876E500A4D25C /* AddNotes.jpg */; };
+		8FF1BAE318C876E500A4D25C /* AddNotes@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1BAE118C876E500A4D25C /* AddNotes@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		8F9C571B18ACAF4300ECFC19 /* Occuhunt_RecruiterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Occuhunt_RecruiterTests.m; sourceTree = "<group>"; };
 		8FA320F018B18DD400BF6CD4 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		8FA320F118B18DD400BF6CD4 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		8FF1BAE018C876E500A4D25C /* AddNotes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AddNotes.jpg; sourceTree = "<group>"; };
+		8FF1BAE118C876E500A4D25C /* AddNotes@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "AddNotes@2x.jpg"; sourceTree = "<group>"; };
 		9BD462FC6FEB43D6BB0CA682 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -241,6 +245,8 @@
 				8F1646B518AF499C00BA7521 /* SharpLabel.h */,
 				8F1646B618AF499C00BA7521 /* SharpLabel.m */,
 				8F11C58318B1B66000409A34 /* Favicon4.png */,
+				8FF1BAE018C876E500A4D25C /* AddNotes.jpg */,
+				8FF1BAE118C876E500A4D25C /* AddNotes@2x.jpg */,
 				8F608D6D18B1F570008F45EA /* PIN */,
 				8F9C570818ACAF4300ECFC19 /* Images.xcassets */,
 				8F9C56F118ACAF4300ECFC19 /* Supporting Files */,
@@ -361,7 +367,9 @@
 			files = (
 				8F9C570118ACAF4300ECFC19 /* Main_iPad.storyboard in Resources */,
 				8F1646AE18AF45C700BA7521 /* ProximaNova-Regular.otf in Resources */,
+				8FF1BAE318C876E500A4D25C /* AddNotes@2x.jpg in Resources */,
 				8F16469418AF339500BA7521 /* NavigationControllerData.plist in Resources */,
+				8FF1BAE218C876E500A4D25C /* AddNotes.jpg in Resources */,
 				8F1646A918AF45C700BA7521 /* ProximaNova-BoldIt.otf in Resources */,
 				8F16469C18AF3A2400BA7521 /* OccuhuntLogo.png in Resources */,
 				8F9C570918ACAF4300ECFC19 /* Images.xcassets in Resources */,
@@ -579,7 +587,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sidwyn Koh (4G4RRN54K8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sidwyn Koh (FZZX7AJEE8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Occuhunt Recruiter/Occuhunt Recruiter-Prefix.pch";
 				INFOPLIST_FILE = "Occuhunt Recruiter/Occuhunt Recruiter-Info.plist";
@@ -597,7 +605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sidwyn Koh (4G4RRN54K8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sidwyn Koh (FZZX7AJEE8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Occuhunt Recruiter/Occuhunt Recruiter-Prefix.pch";
 				INFOPLIST_FILE = "Occuhunt Recruiter/Occuhunt Recruiter-Info.plist";
